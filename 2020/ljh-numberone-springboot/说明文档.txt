@@ -1,0 +1,5 @@
+使用说明：
+
+打开numberone-admin下的NumberoneApplication.java文件，直接运行
+访问地址：http://localhost/index
+admin/admin

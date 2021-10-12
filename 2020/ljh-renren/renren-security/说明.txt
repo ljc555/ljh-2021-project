@@ -1,0 +1,9 @@
+一、数据库设置
+url: jdbc:mysql://193.112.22.138:3306/renren_security?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+
+二、redis设置
+host: 193.112.22.138
+
+三、访问地址
+http://localhost:8080/renren-security
+admin/admin

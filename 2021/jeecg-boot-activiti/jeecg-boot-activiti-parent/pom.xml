@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.jeecgframework.boot</groupId>
-  <artifactId>jeecg-boot-parent</artifactId>
+  <artifactId>jeecg-boot-activiti-parent</artifactId>
   <version>2.4.0</version>
   <packaging>pom</packaging>
 
@@ -49,15 +49,15 @@
 	</properties>
 
 	<modules>
-		<module>jeecg-boot-base</module>
-		<module>jeecg-boot-module-demo</module>
-		<module>jeecg-boot-module-extend</module>
-		<module>jeecg-boot-module-activiti</module>
-		<module>jeecg-boot-module-system</module>
+		<module>jeecg-boot-activiti-base</module>
+		<module>jeecg-boot-activiti-module-demo</module>
+		<module>jeecg-boot-activiti-module-extend</module>
+		<module>jeecg-boot-activiti-module-activiti</module>
+		<module>jeecg-boot-activiti-module-system</module>
 		
 		<!-- 需要微服务，请打开注释
-		<module>jeecg-boot-starter</module>
-		<module>jeecg-cloud-module</module>-->
+		<module>jeecg-boot-activiti-starter</module>
+		<module>jeecg-cloud-activiti-module</module>-->
 	</modules>
 
 	<distributionManagement>
@@ -133,67 +133,67 @@
 			<!-- system 模块-->
 			<dependency>
 				<groupId>org.jeecgframework.boot</groupId>
-				<artifactId>jeecg-boot-module-system</artifactId>
+				<artifactId>jeecg-boot-activiti-module-system</artifactId>
 				<version>${jeecgboot.version}</version>
 			</dependency>
 
 			<!-- jeecg tools -->
 			<dependency>
 				<groupId>org.jeecgframework.boot</groupId>
-				<artifactId>jeecg-boot-base-tools</artifactId>
+				<artifactId>jeecg-boot-activiti-base-tools</artifactId>
 				<version>${jeecgboot.version}</version>
 			</dependency>
 			<!-- jeecg core -->
 			<dependency>
 				<groupId>org.jeecgframework.boot</groupId>
-				<artifactId>jeecg-boot-base-core</artifactId>
+				<artifactId>jeecg-boot-activiti-base-core</artifactId>
 				<version>${jeecgboot.version}</version>
 			</dependency>
 			<!-- system 单体 api -->
 			<dependency>
 				<groupId>org.jeecgframework.boot</groupId>
-				<artifactId>jeecg-system-local-api</artifactId>
+				<artifactId>jeecg-boot-activiti-system-local-api</artifactId>
 				<version>${jeecgboot.version}</version>
 			</dependency>
 			<!-- system 微服务 api -->
 			<dependency>
 				<groupId>org.jeecgframework.boot</groupId>
-				<artifactId>jeecg-system-cloud-api</artifactId>
+				<artifactId>jeecg-boot-activiti-system-cloud-api</artifactId>
 				<version>${jeecgboot.version}</version>
 			</dependency>
 
             <!--微服务模块-->
             <dependency>
                 <groupId>org.jeecgframework.boot</groupId>
-                <artifactId>jeecg-boot-starter-cloud</artifactId>
+                <artifactId>jeecg-boot-activiti-starter-cloud</artifactId>
                 <version>${jeecgboot.version}</version>
             </dependency>
 
 			<!--xxl-job定时任务-->
 			<dependency>
 				<groupId>org.jeecgframework.boot</groupId>
-				<artifactId>jeecg-boot-starter-job</artifactId>
+				<artifactId>jeecg-boot-activiti-starter-job</artifactId>
 				<version>${jeecgboot.version}</version>
 			</dependency>
 
 			<!--redis分布式锁-->
 			<dependency>
 				<groupId>org.jeecgframework.boot</groupId>
-				<artifactId>jeecg-boot-starter-lock</artifactId>
+				<artifactId>jeecg-boot-activiti-starter-lock</artifactId>
 				<version>${jeecgboot.version}</version>
 			</dependency>
 
 			<!--rabbitmq消息队列-->
 			<dependency>
 				<groupId>org.jeecgframework.boot</groupId>
-				<artifactId>jeecg-boot-starter-rabbitmq</artifactId>
+				<artifactId>jeecg-boot-activiti-starter-rabbitmq</artifactId>
 				<version>${jeecgboot.version}</version>
 			</dependency>
 
 			<!--redis-->
 			<dependency>
 				<groupId>org.jeecgframework.boot</groupId>
-				<artifactId>jeecg-boot-starter-redis</artifactId>
+				<artifactId>jeecg-boot-activiti-starter-redis</artifactId>
 				<version>${jeecgboot.version}</version>
 			</dependency>
 

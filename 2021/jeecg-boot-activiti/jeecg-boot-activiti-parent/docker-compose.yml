@@ -27,7 +27,7 @@ services:
 
   jeecg-boot-system:
     build:
-      context: ./jeecg-boot-module-system
+      context: jeecg-boot-activiti-module-system
     restart: always
     container_name: jeecg-boot-system
     image: jeecg-boot-system

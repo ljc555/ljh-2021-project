@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.modules.travel.dao.TravelApplyDao">
+
+    <select id="queryList" resultType="io.renren.modules.travel.entity.TravelApplyQueryEntity" >
+        select a.ecnum,i.erdat,i.loevm,i.dmbtr,i.comment,u.tel,u.bankc
+        from travel_apply as a
+        left join travel_apply_item as i on i.ecnum=a.ecnum
+        left join travel_user as u on u.pernr = a.pernr
+        <where>
+            #{where}
+        </where>
+        <if test="offset != null and limit != null ">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+        select count(1)
+        from travel_apply as a
+        left join travel_apply_item as i on i.ecnum=a.ecnum
+        left join travel_user as u on u.pernr = a.pernr
+        <where>
+            #{where}
+        </where>
+    </select>
+</mapper>

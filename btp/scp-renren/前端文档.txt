@@ -1,0 +1,17 @@
+一、安装
+# 安装依赖
+npm install
+# 执行命令：
+创建目录vendor
+npm rebuild node-sass --save-dev
+# 启动服务
+npm run dev
+
+二、打包
+# 构建生产环境(默认) npm run build
+# 构建测试环境
+npm run build --qa
+# 构建验收环境
+npm run build --uat
+# 构建生产环境
+npm run build --prod

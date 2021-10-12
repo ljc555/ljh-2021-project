@@ -1,0 +1,33 @@
+第一步：准备好代码和数据
+    后端工程：backend-renren
+    前端工程：frontend-web
+    Hana数据脚本：hana.sql
+
+第二步：创建hdi hana
+    1.发布应用frontend-web。
+    2.在marketplace 中创建一个hdi服务，名称为：helloworld-hana，类型为：hdi-shared
+    3.把helloworld-hana服务绑定到frontend-web上
+    4.在frontend-web环境变量中，查看数据库链接：
+    	"host": "zeus.hana.prod.eu-central-1.whitney.dbaas.ondemand.com",
+    	"port": "23803",
+    	"driver": "com.sap.db.jdbc.Driver",
+    	"url": "jdbc:sap://zeus.hana.prod.eu-central-1.whitney.dbaas.ondemand.com:23803?encrypt=true&validateCertificate=true&currentschema=13FBE061882E491AB47CB8D7D0DD7F63",
+    	"schema": "13FBE061882E491AB47CB8D7D0DD7F63",
+    	"hdi_user": "13FBE061882E491AB47CB8D7D0DD7F63_AFM0M86ZHAZG5XLG4DSKVVFED_DT",
+    	"hdi_password": "Ih5OAAvwysPg4R7RDmPZCq7nLfWcTnUfXfcv38VYEV6UWCtqEyCI3L_E-Wjr6ibwWkQbZmTjqyIXe7JbwGtARfTEzMgGlPri8-bQ8IOkOJZpRHu2NrCzZkAIto7fvgCF",
+    	"user": "13FBE061882E491AB47CB8D7D0DD7F63_AFM0M86ZHAZG5XLG4DSKVVFED_RT",
+    	"password": "Ri7RYC-3UXLwLc9qFjB9HD_4ossFxr6Ul9d01fd8jSECNnX7u4OU6Z-XLaZOQQFzPCzFyDKL.3AfegkYdzen0GdhgGHIO7j_bHXoOCeIEBIahgdTMYol6xMa1vXePb1r",
+
+    5.使用sap web ide进入hana数据库控制台，导入脚本。
+    6.使用ideal开发工具，连接hana数据库控制台。
+        配置url、user、password
+    7.由于在scp上创建的hdi hana存在权限问题，所以使用腾迅云上的mysql替代。
+        数据库：scp_renren
+
+第二步：发布后台程序backend-renren
+    使用maven工具进行打包。
+    打包prod pom，打包生成文件为：
+    本地swager访问地址：http://localhost:8080/swagger/index.html
+
+第三步：发布前台程序frontend-web
+    先修改后端调用地址：window.SITE_CONFIG['baseUrl'] = 'https://backend-renren.cfapps.eu10.hana.ondemand.com';

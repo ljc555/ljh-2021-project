@@ -1,0 +1,24 @@
+<!--page_package/transfer/chain/chain.wxml-->
+<view class="cu-card case">
+        <textarea class="cu-item shadow padding-sm color3"
+                  value="{{chainContent}}"
+                  style="width: 90%;margin-left: 5%;height: 256px;background-color: #f2f2f2"
+                  bindinput="textareaBInput"></textarea>
+</view>
+<view class="font24 color6" style="width: 90%;margin-left: 5%">请勿更改链接，尚橙仅提供技术支持，请确保分享内容真实合法，勿使用京东内部优惠券、好评返现虚假描述</view>
+
+<view style="position: fixed;bottom: 0px;width: 100%" >
+        <view class="flex-row font-center font24 color3" style="width: 100%;padding-left:2%;height: 64rpx;background-color: #FDF4D7">
+                <view style="color: #DBAE51">如何分享？1</view>
+                <view>保存文字</view>
+                <view style="color: #DBAE51">=>2</view>
+                <view>关闭小程序</view>
+                <view style="color: #DBAE51">=>3</view>
+                <view>粘贴到群或个人</view>
+<!--                <view class="cuIcon-close" style="color: #DBAE51"></view>-->
+        </view>
+        <view class="cu-btn bg-gradual-main" style="width: 100%;height: 84rpx;" data-index=""
+                bindtap="onCopy">保存文字</view>
+</view>
+
+<prompt promptMsg="{{msg}}" invitationDialog="{{isShowDialog}}" confirmText="确定"/>

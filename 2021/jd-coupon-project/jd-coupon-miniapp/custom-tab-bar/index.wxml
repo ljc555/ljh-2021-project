@@ -1,0 +1,35 @@
+<!-- 底部导航栏 -->
+<view class="cu-bar tabbar bg-white foot" style="background-color: white">
+    <view class="action" data-path="/pages/index/index" data-index="0" bindtap="switchTab">
+        <view class='cuIcon-cu-image'>
+<!--            <image src="/images/ic_tab_home{{selected==0?'_cur':''}}.png"></image>-->
+            <view class="cuIcon-homefill {{selected==0?'color-main':'colora'}}"></view>
+        </view>
+        <view class="{{selected==0?'color-main':'colora'}} font-w600" >首页</view>
+    </view>
+    <view class="action" data-path="/pages/sort/sort" data-index="1" bindtap="switchTab">
+        <view class='cuIcon-cu-image'>
+<!--            <image src="/images/ic_tab_daren{{selected==1?'_cur':''}}.png"></image>-->
+            <view class="cuIcon-shopfill {{selected==1?'color-main':'colora'}}"></view>
+        </view>
+        <view class="{{selected==1?'color-main':'colora'}} font-w600">分类</view>
+    </view>
+    <view class="action add-action" data-path="/pages/vip/vip" data-index="2" bindtap="switchTab">
+        <view class='cuIcon-cu-image shadow'>
+            <image src="/images/ic_tab_vip{{selected==2?'_cur':''}}.png" style="width:64rpx;height:64rpx"></image>
+        </view>
+        <view class="{{selected==2?'color-main':'colora'}} font-w600">会员</view>
+    </view>
+    <view class="action" data-path="/pages/strategy/strategy" data-index="3" bindtap="switchTab">
+        <view class='cuIcon-cu-image'>
+            <image src="/images/ic_tab_strategy{{selected==3?'_cur':''}}.png"/>
+        </view>
+        <view class="{{selected==3?'color-main':'colora'}} font-w600">攻略</view>
+    </view>
+    <view class="action" data-path="/pages/mine/mine" data-index="4" bindtap="switchTab">
+        <view class='cuIcon-cu-image'>
+            <image src="/images/ic_tab_mine{{selected==4?'_cur':''}}.png"/>
+        </view>
+        <view class="{{selected==4?'color-main':'colora'}} font-w600">我的</view>
+    </view>
+</view>

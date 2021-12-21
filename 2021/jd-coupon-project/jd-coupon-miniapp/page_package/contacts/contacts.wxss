@@ -1,0 +1,25 @@
+/* page_package/contacts/contacts.wxss */
+
+page{
+    background-color: #f2f2f2;
+}
+
+.absolute-right{
+    position: absolute;
+    right: 40rpx;
+}
+
+.action-btn1{
+    padding: 4rpx 16rpx;
+    border-radius: 6rpx;
+    background-color: white;
+    border: 1rpx solid #f43f3b;
+}
+
+.rank{
+    padding: 4rpx 16rpx;
+    border-radius: 32rpx;
+    color:#888;
+    background-color: white;
+    border: 1rpx solid #666666;
+}

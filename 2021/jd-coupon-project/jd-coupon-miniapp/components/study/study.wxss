@@ -1,0 +1,11 @@
+/* components/study/study.wxss */
+@import "../../utils/styles/main.wxss";
+@import "../../utils/styles/icon.wxss";
+@import "../../utils/styles/animation.wxss";
+@import "../../utils/styles/base.wxss";
+
+.skill{
+    border-left: 8rpx solid #f43f3b;
+    padding: 4rpx 8rpx;
+
+}

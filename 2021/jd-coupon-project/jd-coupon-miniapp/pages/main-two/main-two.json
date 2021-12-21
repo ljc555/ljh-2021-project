@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "home": "/pages/main-two/home/home",
+    "type": "/pages/main-two/type/type",
+    "bc-scroll": "/components/refresh/refresh"
+  }
+}

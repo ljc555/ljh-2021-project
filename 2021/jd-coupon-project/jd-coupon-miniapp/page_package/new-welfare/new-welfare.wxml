@@ -1,0 +1,31 @@
+<!--page_package/new-welfare/new-welfare.wxml-->
+<!--<custom bgColor="bg-gradual-main" isBack="{{true}}">-->
+<!--    <view slot="backText">返回</view>-->
+<!--    <view slot="content" class="font-w600">新人福利</view>-->
+<!--</custom>-->
+
+<scroll-view scroll-y class="scrollPage" style="height: {{windowHeight - CustomBar - 16}}px;">
+
+    <view class="shadow-blur content-body">
+        <view class="flex-row flex-center font31 color-black ">活动介绍</view>
+        <text class="margin-top-xs">{{activityContent}}</text>
+    </view>
+
+    <view class="shadow-blur content-body">
+        <view class="flex-row flex-center font31 color-black ">活动介绍</view>
+        <text class="margin-top-xs">{{activityContent}}</text>
+    </view>
+
+    <view class="shadow-blur content-body">
+        <view class="flex-row flex-center font31 color-black ">活动介绍</view>
+        <text class="margin-top-xs">{{activityContent}}</text>
+    </view>
+
+   <view class='cu-tabbar-height'></view>
+</scroll-view>
+
+<view class="cu-bar bg-white tabbar border shop bottom-bar" style="position: absolute;bottom: 0px;width: 100%">
+    <view class="bg-white submit">微信推广</view>
+    <view class="bg-orange submit">面对面推广</view>
+    <view class="bg-red submit">朋友圈推广</view>
+</view>

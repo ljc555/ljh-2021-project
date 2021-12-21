@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csbaic.jd.mapper.TeamMemberMapper">
+
+
+
+    <select id="findNearestLeaderOfMemberAndIdentify" resultType="com.csbaic.jd.entity.TeamMemberEntity">
+        SELECT
+         t.id, t.leader_id, t.member_id, t.level, t.create_time
+        FROM jd_team_member AS t
+        RIGHT JOIN jd_user AS u ON u.id = t.leader_id  AND u.identify = #{identify}
+        WHERE t.member_id = #{memberId} AND t.leader_id != #{memberId}
+        ORDER BY level ASC
+        LIMIT 1
+    </select>
+    <select id="countByLeaderIdAndUserIdentifyAndLevel" resultType="java.lang.Integer">
+        SELECT
+            COUNT(t.id)
+        FROM jd_team_member AS t
+        RIGHT JOIN jd_user AS u ON u.id = t.member_id
+
+        <if test="identify != null">
+            AND u.identify = #{identify}
+        </if>
+
+        WHERE t.leader_id = #{leaderId} AND t.member_id != #{leaderId}
+
+        <if test="level != null">
+            AND t.level = #{level}
+        </if>
+
+    </select>
+
+
+</mapper>

@@ -1,0 +1,4 @@
+/* page_package/profit/profit.wxss */
+page{
+    background-color: #f2f2f2;
+}

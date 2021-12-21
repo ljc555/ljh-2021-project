@@ -1,0 +1,13 @@
+{
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 100,
+  "navigationBarTitleText": "尚橙·京东优惠券",
+  "usingComponents": {
+    "main": "/pages/main-two/main-two",
+    "home": "/pages/main-two/home/home",
+    "type": "/pages/main-two/type/type",
+    "home-page": "/components/home-page/home-page"
+  }
+}

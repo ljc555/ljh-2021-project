@@ -1,0 +1,16 @@
+/* page_package/apply-vip/apply-vip.wxss */
+page {
+    background-color: #f2f2f2;
+}
+
+.apply-body {
+    width: 94%;
+    margin-left: 3%;
+}
+
+.apply-title {
+    margin-top: 48 rpx;
+    font-size: 32 rpx;
+    font-weight: 600;
+    color: #000;
+}

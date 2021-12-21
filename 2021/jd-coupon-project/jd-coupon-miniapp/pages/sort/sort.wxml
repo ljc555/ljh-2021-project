@@ -1,0 +1,95 @@
+<!--pages/sort/sort.wxml-->
+<!--<custom bgColor="bg-gradual-main" isBack="{{false}}">-->
+<!--    <view slot="content" class="font-w600 font34">商品分类</view>-->
+<!--</custom>-->
+
+<view class="VerticalBox" style="height: {{windowHeight}}px">
+
+    <scroll-view class="VerticalNav nav"
+                 scroll-y
+                 scroll-with-animation
+                 scroll-top="{{VerticalNavTop}}">
+        <view class="cu-item font26 {{index==TabCur?'text-main-color cur font-w600':''}}"
+              wx:for="{{productType}}"
+              wx:key="*this"
+              bindtap='tabSelect'
+              data-id="{{index}}"
+              data-item="{{item}}">{{item.name}}
+        </view>
+<!--        <view class='cu-tabbar-height'></view>-->
+    </scroll-view>
+
+    <scroll-view scroll-y
+                 scrollTop="{{scrollTop}}"
+                 bindscrolltolower="more"
+                 lower-threshold="128"
+                 refresher-enabled="true"
+                 bindrefresherrefresh="refresh"
+                 refresher-triggered="{{requesting}}"
+                 style="width:{{windowWidth - 84}}px">
+        <view class="cu-list grid col-2 no-border">
+            <view class="cu-item flex-column flex-center rounded" wx:for="{{productList}}" wx:key="*this"
+                  bindtap="onClick" data-item="{{item}}">
+               <view class="flex-column">
+                   <image
+                           class="img-item" src="{{item.images[0]}}"
+                           style="width:{{windowWidth*0.35}}px;height:{{windowWidth*0.35}}px;"></image>
+                   <view class="tag-product">京东</view>
+               </view>
+
+                <view class="flex-column shadow-blur type-item">
+                       <view class="color3 margin-top-xs ellipsis font-w600 font24" style="width:{{windowWidth*0.35}}px">
+                           {{item.skuName}}
+                       </view>
+                    <view class="flex-row margin-left-xs margin-top-xs">
+                        <view style="width:{{windowWidth * 0.20}}px;height: 1.2rem;">
+                            <view class="coupon-item">
+                                <view class="style-three bg-gradual-main flex-row flex-center">
+                                    <view class="font20 flex-row flex-center" wx:if="{{item.coupons[0].discount}}"
+                                          style="color: white;">优惠券￥{{item.coupons[0].discount ? item.coupons[0].discount : 0}}
+                                    </view>
+                                    <view class="font20 flex-row flex-center" wx:else>{{item.commissionInfo.rebateHint}}</view>
+                                    <view class="get-btn"></view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="flex-row margin-top-xs font20 margin-left-xs">
+                        <view>{{item.comments}}条评论</view>
+                        <view class="comment">{{item.goodCommentsShare}}%好评率</view>
+                    </view>
+<!--                    <view class="flex-row margin-top-xs margin-left-xs" style="align-items: center;">-->
+<!--                        <view class="color-main font24">券后价￥</view>-->
+<!--                        <view class="color-main font30 font-w600">{{item.priceInfo.lowestCouponPrice ?-->
+<!--                            item.priceInfo.lowestCouponPrice:item.priceInfo.price}}-->
+<!--                        </view>-->
+<!--                    </view>-->
+
+                    <view class="flex-row margin-top-xs margin-left-xs" style=" align-items: center;">
+                        <view class="color-main font24 flex-row" wx:if="{{item.coupons[0].discount}}">
+                            <view>券后价</view>
+                            <view class="text-price color-main font30 font-w600 text-white">{{item.priceInfo.lowestCouponPrice ?
+                                item.priceInfo.lowestCouponPrice:item.priceInfo.price}}
+                            </view>
+                        </view>
+                        <view class="color-main font24 flex-row" wx:else>
+                            <view>返利价</view>
+                            <view class="text-price color-main font30 font-w600 text-white">{{item.priceInfo.lowestRebatePrice}}
+                            </view>
+                        </view>
+                    </view>
+
+                    <view class="rounded color6 margin-top-xs flex-center flex-column"
+                          style="height:38rpx;  font-size: 18rpx;background-color: #FFEED5;color: #A78C72">{{item.commissionInfo.commissionHint}}
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="cu-load loading" wx:if="{{requesting}}"></view>
+<!--        <view class='cu-tabbar-height'></view>-->
+    </scroll-view>
+
+</view>
+
+
+

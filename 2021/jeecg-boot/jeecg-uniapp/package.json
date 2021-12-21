@@ -1,0 +1,16 @@
+{
+  "name": "jeecg-uniapp",
+  "version": "1.0.0",
+  "description": "![JEECG](https://static.oschina.net/uploads/img/201905/24164523_XDhg.png \"JeecgBoot快速开发平台\")",
+  "main": "main.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ljc555",
+  "license": "ISC"
+}

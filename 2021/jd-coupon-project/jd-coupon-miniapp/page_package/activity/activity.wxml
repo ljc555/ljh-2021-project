@@ -1,0 +1,28 @@
+<!--page_package/activity/activity.wxml-->
+<view wx:if="{{activityContent}}" style="background-color: #f2f2f2">
+    <view class="cu-card bg-gradual-white">
+        <view class="cu-item shadow-blur padding">
+            <view class="flex-row flex-center color-black font30 margin-bottom font-w600">如何参与活动？</view>
+            <text class="color6">{{copywriting}}</text>
+        </view>
+        <view class="cu-item shadow-blur padding">
+            <view class="flex-row flex-center color-black font30 margin-bottom font-w600">活动文案</view>
+            <text class="color6">{{activityContent.content}}</text>
+        </view>
+
+        <view class="cu-item shadow-blur">
+            <image src="{{activityContent.shareImage}}"
+                   bindtap="goToIcon"
+                   style="width: 100%;height: {{windowWidth}}px"/>
+<!--            <canvas canvas-id="myCanvas"-->
+<!--                    class="bg-white"-->
+<!--                    style="width: {{imgWidth}}px;height: {{imgHeight}}px;"></canvas>-->
+        </view>
+    </view>
+    <view class='cu-tabbar-height'></view>
+    <view class="cu-bar bg-white tabbar border shop bottom-bar">
+        <view class="bg-orange submit" bindtap="onCopy" data-index="1">复制文字</view>
+        <view class="bg-red submit" bindtap="goToIcon">分享图片</view>
+    </view>
+
+</view>

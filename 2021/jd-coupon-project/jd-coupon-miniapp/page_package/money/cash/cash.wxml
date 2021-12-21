@@ -1,0 +1,69 @@
+<!--page_package/money/cash/cash.wxml-->
+<!--<custom bgColor="bg-gradual-main" isBack="{{true}}">-->
+<!--    <view slot="backText">返回</view>-->
+<!--    <view slot="content" class="font-w600">提现</view>-->
+<!--</custom>-->
+
+<bc-scroll id="type-scroll" requesting="{{requesting}}"
+           empty-show="{{emptyShow}}"
+           end="{{end}}"
+           listCount="0"
+           has-top="{{hasTop}}"
+           enable-back-to-top="{{enableBackToTop}}"
+           refresh-size="{{refreshSize}}"
+           bottom-size="{{bottomSize}}"
+           color="{{color}}"
+           bind:more="more"
+           bind:refresh="refresh">
+
+    <view class="cu-list menu sm-border">
+        <view class="cu-item arrow" bindtap="itemClick" data-index="0">
+            <view class="content">
+                <view class="color3">可提现金额：￥{{cashData.balance}}</view>
+                <view class="text-gray text-sm">{{cashData.withdrawLimit}}</view>
+            </view>
+            <view style="right: 1rpx" class="text-grey">提现</view>
+        </view>
+        <view class="cu-item arrow" bindtap="itemClick" data-index="1">
+            <view class="content color3">提现历史</view>
+            <view style="right: 1rpx" class="text-grey">详情</view>
+        </view>
+        <view class="cu-item arrow" bindtap="itemClick" data-index="2">
+            <view class="content color3">结算账单</view>
+            <view style="right: 1rpx" class="text-grey">详情</view>
+        </view>
+    </view>
+
+    <view class="rule-card shadow-blur padding-sm flex-column margin-top-sm">
+        <view class="color-main font-w600">我的本月可提现收益与上月预估收益不一致？</view>
+        <view class="color3 font-w600 margin-top-xs">根据京东推广规则：</view>
+        <text class="margin-top-xs color4 rule-text">{{rule}}</text>
+        <view class="text-blue margin-top-xs" bindtap="itemClick" data-index="3">更多提现说明></view>
+    </view>
+
+    <view class="process-card margin-top-xl">
+        <text class="margin-top-xs color6 rule-text">{{process}}</text>
+    </view>
+    <view style="height: 48rpx"></view>
+</bc-scroll>
+
+
+<view class="cu-modal {{invitationDialog ? 'show':''}}">
+    <view class="cu-dialog">
+        <view class="cu-bar bg-white justify-end">
+            <view class="content">提示</view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class="padding-xl bg-gradual-white1 flex-column flex-center font30">
+            <text class="line-height">提现金额会自动转到微信零钱</text>
+            <text class="line-height margin-top-xs margin-bottom-xs">需要提供微信号才能发起提现</text>
+        </view>
+        <view class="cu-bar bg-white">
+            <view class="action margin-0 flex-sub  solid-left" bindtap="hideModal" data-iscode="1">取消</view>
+            <view class="action margin-0 flex-sub  solid-left color-main" bindtap="hideModal" data-iscode="0">去完善
+            </view>
+        </view>
+    </view>
+</view>

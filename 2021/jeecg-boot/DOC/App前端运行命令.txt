@@ -1,0 +1,16 @@
+一、git代码
+    git代码：https://github.com/jeecgboot/jeecg-uniapp
+    帮助文档：http://doc.jeecg.com/2044259
+
+二、安装
+    yarn install
+
+三、启动
+    yarn run serve
+  - Local:   http://localhost:3000/
+  - Network: http://10.12.171.201:3000/
+  用户名和密码：admin/123456
+
+四、 编译项目
+    yarn run build
+

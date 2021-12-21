@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "type": "/pages/main-two/type/type"
+  }
+}

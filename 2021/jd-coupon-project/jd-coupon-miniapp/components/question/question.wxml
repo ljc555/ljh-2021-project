@@ -1,0 +1,32 @@
+<!--components/question/question.wxml-->
+<view class="flex-column margin-top-sm" wx:for="{{listData}}" wx:key="*this">
+    <view style="background-color: white">
+        <view class="flex-row">
+            <view class="flex-row question-icon margin-top-xl">
+                <view class="flex-column flex-center">
+<!--                    goodsfill-->
+                    <view class="type-icon flex-row flex-center"><text class="cuIcon-{{item.icon}} font34"></text></view>
+                    <view class="margin-top-sm color4">{{item.category}}</view>
+                </view>
+            </view>
+            <view class="flex-column question-list">
+                <view wx:for="{{item.questions}}" wx:key="*this"
+                      wx:for-item="items"
+                      wx:if="{{item.open? true : index < 2}}"
+                      bindtap="itemClick"
+                      data-items="{{items}}"
+                      class="question-item flex-row ellipsis font26 color6">{{items.title}}
+                </view>
+            </view>
+        </view>
+        <view style="height: 40rpx;width: 20rpx"></view>
+    </view>
+
+    <!--    fold-->
+    <view class="flex-row flex-center">
+        <view class="shrink-btn color-main font26" bindtap="onShrink" data-index="{{index}}" data-item="{{item}}">{{item.open?'折叠收回':'展开更多'}}
+            <text class="cuIcon-{{item.open?'fold':'unfold'}}"/>
+        </view>
+    </view>
+
+</view>

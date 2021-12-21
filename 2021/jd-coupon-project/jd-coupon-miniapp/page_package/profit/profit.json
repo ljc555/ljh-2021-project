@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "我的收益",
+  "usingComponents": {
+    "bc-scroll": "/components/refresh/refresh"
+  }
+}

@@ -1,0 +1,74 @@
+<!--components/poster/poster.wxml-->
+
+<canvas canvas-id="myCanvas" class="margin-top-sm {{!synthesisImg?'':'bg-white'}}"
+        wx:if="{{!synthesisImg}}"
+        style="width: {{imgWidth}}px;height: {{imgHeight}}px;position: absolute;z-index: -1;top: 0"></canvas>
+
+<canvas canvas-id="myCanvas1" class="margin-top-sm bg-white"
+        wx:if="{{!appCodes}}"
+        style="width: {{codeWidth}}px;height: {{codeHeight}}px;position: absolute;z-index: -1;top: 0"></canvas>
+
+<view style="z-index: 1007;position: absolute;top: 46px;width: 100%">
+    <view style="width: 100%;background-color: white">
+        <view class="cu-btn code-bg radius" style="width: 90%;margin-left: 5%;height: 64rpx;"
+              bindtap="appsCode">
+            <view class="cuIcon-forwardfill color-main"></view>
+            <view class="color3 margin-left-xs">获取我的高清小程序码</view>
+            <view class="cuIcon-right color3" style="position: absolute;right: 24rpx"></view>
+        </view>
+    </view>
+    <view class="flex-column padding margin-bottom-sm"
+          wx:for="{{listData}}"
+          wx:key="*this"
+          style="background-color: white;">
+        <view class="flex-row" style="align-items: center">
+            <image class="cu-avatar lg round" src="{{item.iconUrl}}"/>
+            <view class="font28 color3 font-w600 margin-left-xs">{{item.title}}</view>
+        </view>
+        <view class="flex-row margin-top-xs">
+            <view class="flex-column" style="width: 65%">
+                <text class="color4 font24" style="line-height: 38rpx">{{item.content}}</text>
+                <view class="colorff9700 margin-top-sm">#点击图片获取您的专属海报#</view>
+                <image style="width: 84px;height: 256rpx"
+                       class="margin-top-sm"
+                       bindtap="onPoster"
+                       data-item="{{item}}"
+                       data-index="{{index}}"
+                       src="{{item.imageUrl}}"/>
+            </view>
+            <view style="width: 28%;text-align: center;justify-content: center" class="flex-row padding-left">
+                <view class="color-main margin-left copy-btn flex-row flex-center"
+                    bindtap="onCopy" data-item="{{item}}">复制文字</view>
+            </view>
+        </view>
+    </view>
+</view>
+
+
+<view class="cu-modal {{invitationDialog ? 'show':''}} flex-column flex-center">
+    <view class="cu-dialog1 color-white flex-column flex-center">
+        <view class="flex-column flex-center">
+            <text class="cuIcon-roundclosefill color-white" style="font-size: 32px" bindtap="onClose"></text>
+            <image src="{{synthesisImg}}" style="width: {{imgWidth}}px;height: {{imgHeight}}px;"/>
+            <view class="cu-btn round  shadow-blur colorf2 margin-top"
+                  style="width: 500rpx;background-color: #f43f3b;height: 72rpx;margin-bottom: 72rpx"
+                  bindtap="saveImg">
+                保存到手机相册
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="cu-modal {{mDialog ? 'show':''}} flex-column flex-center">
+    <view class="cu-dialog1 color-white flex-column flex-center">
+        <view class="flex-column flex-center">
+            <text class="cuIcon-roundclosefill color-white" style="font-size: 32px" bindtap="onClose"></text>
+            <image src="{{appCodes}}" style="width: {{codeWidth}}px;height: {{codeWidth}}px;"/>
+            <view class="cu-btn round  shadow-blur colorf2 margin-top"
+                  style="width: 300rpx;background-color: #f43f3b;height: 72rpx;margin-bottom: 72rpx"
+                  bindtap="saveImg1">
+                保存到手机相册
+            </view>
+        </view>
+    </view>
+</view>

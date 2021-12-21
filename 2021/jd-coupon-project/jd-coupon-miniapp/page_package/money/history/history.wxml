@@ -1,0 +1,59 @@
+<!--page_package/money/history/history.wxml-->
+<!--<custom bgColor="bg-gradual-main" isBack="{{true}}">-->
+<!--    <view slot="backText">返回</view>-->
+<!--    <view slot="content" class="font-w600">提现历史</view>-->
+<!--</custom>-->
+
+<bc-scroll id="type-scroll" class="VerticalMain" requesting="{{requesting}}" empty-show="{{emptyShow}}" end="{{end}}"
+           listCount="0" has-top="{{hasTop}}" enable-back-to-top="{{enableBackToTop}}" refresh-size="{{refreshSize}}"
+           bottom-size="{{bottomSize}}"
+           color="{{color}}" bind:refresh="refresh" bind:more="more"
+           style="height:calc(100vh-40rpx);width:{{windowWidth - 84}}px">
+
+    <view wx:if="{{historyList.length == 0}}"
+          class="flex-column flex-center" style="width: 100%;height: {{windowHeight - CustomBar}}px">
+        <text class="cuIcon-text color8" style="font-size: 128rpx"></text>
+        <view class="margin-top color4">暂无提现历史</view>
+    </view>
+
+    <view wx:else>
+        <view wx:for="{{historyList}}" wx:key="*this" class="bg-white padding-sm color3 margin-top-sm">
+            <view class="flex-row font-center">单号：{{item.id}}
+                <view class="margin-left-sm bg-white font20 radius padding-left-sm padding-right-sm"
+                      bindtap="copy"
+                      data-item="{{item}}"
+                      style="border: 1px solid #666666;color: #666666;background-color: white">复制
+                </view>
+            </view>
+            <view class="margin-top font-w600">提现者：{{item.payeeName}}</view>
+            <view class="margin-top-xs flex-row font-center">提现金额：
+                <text class="color-main text-price font38">{{item.amount}}</text>
+            </view>
+            <view class="margin-top-xs">提现状态：{{item.statusDesc}}</view>
+            <view class="margin-top-xs margin-bottom-sm">提现时间：{{item.submitTime}}</view>
+
+            <view class="padding-left-sm padding-right-sm bg-white color-main"
+                  bindtap="openDetails"
+                  data-item="{{item}}"
+                  data-index="{{index}}"
+                  style="position: absolute;margin-bottom: -15rpx;left: 42%;border-radius: 32rpx">详情<text class="cuIcon-{{item.isOpen?'fold':'unfold'}}"/>
+            </view>
+
+            <view wx:if="{{item.isOpen}}" class="margin-top-xl" >
+                <block wx:for="{{item.operations}}" wx:key="*this" wx:for-item="im">
+                      <view class="l_box {{index == 0 ? 'l_first':''}}">
+                            <view class="l_content {{index == 0 ? 'l_first_content':''}}">
+                                <view class="">{{im.remark}}</view>
+                                <view class="margin-top-xs font24">{{im.operateTime}}</view>
+                            </view>
+                      </view>
+                </block>
+            </view>
+
+        </view>
+
+    </view>
+
+</bc-scroll>
+
+

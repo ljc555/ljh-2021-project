@@ -1,0 +1,30 @@
+<!--page_package/transfer/transfer/transfer.wxml-->
+<view class="page">
+    <view wx:if="{{isShow}}">
+        <view class="flex-row font-center" style="width: 100%;background-color: #FEF2F0;height: 40px">
+            <view class="cuIcon-recharge color-main margin-left-sm"  style="font-size: 16px"/>
+            <view class="color-main margin-left-sm font24">通过转链后链接生成的订单才能计算到您的佣金中</view>
+            <view class="cuIcon-close color6"
+                  bindtap="onClose"
+                  style="font-size: 16px;position: absolute;right: 15rpx"></view>
+        </view>
+    </view>
+
+    <view class="flex-row bg-white" style="width: 100%">
+        <textarea class="padding color3"
+                  value="{{searchContent}}"
+                  style="width: 85%;height: 256px"
+                  bindinput="textareaBInput"
+                  placeholder="请将您要推广的原原始京东链接（文案+链接）或CPS推广链接（文案+链接）粘贴到这里，请确保链接粘贴完整性"></textarea>
+        <view class="font22 padding-left-xs padding-right-xs margin-left-sm margin-top"
+              style="border: 1px solid #666666;height: 36rpx" bindtap="onClear">清空</view>
+    </view>
+
+    <view class="cu-btn {{searchContent.length > 10?'bg-gradual-main':'bg-grey'}} round"
+          bindtap="onTransfer"
+          style="width: 90%;margin-left: 5%;height: 84rpx;margin-top: 72rpx">转换成我的链接</view>
+
+</view>
+
+
+

@@ -1,0 +1,20 @@
+/* page_package/money/cash/cash.wxss */
+page{
+    background-color: #f2f2f2
+}
+
+.rule-card{
+    width: 94%;
+    margin-left: 3%;
+    border-radius: 8rpx;
+    background-color: white;
+}
+
+.process-card{
+    width: 92%;
+    margin-left: 4%;
+}
+
+.rule-text{
+    line-height:48rpx
+}

@@ -1,0 +1,114 @@
+<!--pages/main/home/home.wxml-->
+<view>
+    <view style="" class="tab-bg bg-white"/>
+    <swiper class="screen-swiper square-dot swiperList-a"
+            indicator-color="#ffffff"
+            indicator-dots="true"
+            circular="true"
+            autoplay="true"
+            interval="5000"
+            wx:if="{{activityList.length > 0}}"
+            duration="500">
+        <swiper-item wx:for="{{activityList}}" wx:key="item" bindtap="clickBanner" data-item="{{item}}">
+            <image src="{{item.coverUrl}}" class="img-border-radius" style="width: 100%;height: {{windowWidth * 0.41}}px"></image>
+        </swiper-item>
+    </swiper>
+
+    <view class="cu-list grid col-5 no-border">
+        <view class="cu-item flex-column flex-center" wx:for="{{iconList}}" wx:key="*this" bindtap="onProductDetails"
+              data-item="{{item}}" data-index="{{index}}">
+<!--            shadow-blur-->
+            <view style="font-size: 26rpx;"
+                  wx:if="{{index == 2}}"
+                  class="list-item-img ic-coupon font-w600 color-white flex-center flex-row">{{item.icon}}</view>
+            <view class="list-item-img flex-row flex-center bj-red color-white bg-gradual-main" wx:else>
+                <image src="{{item.icon}}" style="width: 48rpx;height:48rpx" />
+            </view>
+            <view class="color4 margin-top-xs font26">{{item.name}}</view>
+        </view>
+    </view>
+
+    <view class="msg-body margin-bottom-sm" wx:if="{{newsList.length > 0}}">
+        <view class="color-main flex-row  flex-center title-msg font-center">
+            <view>尚橙快报</view>
+            <view class="cuIcon-notificationfill margin-left-xs"></view>
+        </view>
+        <view>
+            <swiper indicator-dots="{{false}}" class="swiperList-b" vertical="true" autoplay="true" interval="3000"
+                    duration="500">
+                <block wx:for="{{newsList}}" wx:key="*this">
+                    <swiper-item bindtap="clickBanner" data-item="{{item}}">
+                        <view class="swiper-item swiper-item-text">
+                            <view class="cuIcon-menu"></view>
+                            {{item.title}}
+                        </view>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+    </view>
+
+<!--    <view class="cu-list grid col-3 gridBorder" style="width:100%" wx:if="{{exclusiveList.length > 0}}">-->
+<!--        <view class="cu-item flex-column flex-center" wx:for="{{exclusiveList}}" bindtap="onCourse"-->
+<!--              data-id="{{index}}"-->
+<!--              wx:key="*this" data-item="{{item}}">-->
+<!--            <view class="color3 font28 font-w600">{{item.title}}</view>-->
+<!--            <view class="color-main font24 margin-xs">{{item.subTitle}}</view>-->
+<!--            <view>-->
+<!--                <image src="{{item.icon}}" style="height:{{windowWidth*0.2}}px;width:{{windowWidth*0.2}}px"></image>-->
+<!--            </view>-->
+<!--        </view>-->
+<!--    </view>-->
+
+    <view class="line-home"></view>
+
+    <view class="recon" wx:if="{{hotList.length > 0}}">
+        <view class="color-main font30 font-w600 margin-top-xs margin-left-sm margin-bottom-xs ">热销推荐</view>
+        <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="5000" duration="500"
+                style="height:{{windowWidth*0.3 + 100}}px">
+            <block wx:for="{{hotList}}" wx:key="*this">
+                <swiper-item>
+                    <view class="swiper-item">
+                        <view class="cu-list grid col-3 no-border" style="margin-top: -30rpx;">
+                            <view class="cu-item flex-column" wx:for="{{item.griddata}}" wx:key="item"
+                                  bindtap="onHotDetails"
+                                  wx:if="{{index<3}}"
+                                  data-item="{{page}}"
+                                  data-index="{{index}}"
+                                  wx:for-item="page"
+                                  style="margin-top: 0rpx;">
+                                <view style="width:{{windowWidth*0.3}}px;" class="flex-column margin-left-xs">
+                                    <image src="{{page.images[0]}}"
+                                           style="width:{{windowWidth*0.3}}px;height:{{windowWidth*0.3}}px;border-radius: 8rpx;"></image>
+                                    <view class="ellipsis ellipsis-title">{{page.skuName}}</view>
+                                    <view class="coupon-pice" wx:if="{{page.coupons[0].discount}}">优惠券￥{{page.coupons[0].discount}}</view>
+                                    <view class="coupon-pice" wx:else>购买返￥{{page.commissionInfo.commission}}</view>
+                                    <view class="flex-row margin-top-xs pice-style">
+                                        <view class="color-main font24">￥{{page.priceInfo.lowestCouponPrice}}</view>
+                                        <view class="color8 font24 margin-left-xs" style="text-decoration:line-through">
+                                            ￥{{page.priceInfo.price}}
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+
+    <view class="line-home"></view>
+
+    <scroll-view scroll-x class="bg-white nav">
+        <view class="flex text-center">
+            <view class="cu-item flex-sub {{index==TabCur?'color-main cur font30 font-w600':''}}" wx:for="{{homeTabs}}"
+                  wx:key="*this" bindtap="tabSelect" data-id="{{index}}" data-item="{{item}}">
+                {{item}}
+            </view>
+        </view>
+    </scroll-view>
+    <type id="home-product-list" bind:pageEvent="pageEvent"/>
+</view>
+
+

@@ -1,0 +1,54 @@
+/* page_package/money/history/history.wxss */
+page{
+    background-color: #f2f2f2;
+}
+
+.l_box{
+    border-left: 1px solid #EEF0F2;
+    padding: 20rpx 0 20rpx 50rpx;
+    margin-left: 30rpx;
+    position: relative;
+}
+.l_box::after{
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: -15rpx;
+    top: 60rpx;
+    width: 20rpx;
+    height: 20rpx;
+    border-radius: 20rpx;
+    background: #BDBDBD;
+    border: 2px solid #EEE;
+}
+.l_content{
+    position: relative;
+    background: #eef0f2;
+    padding: 10rpx 20rpx;
+    border-radius: 10rpx;
+    font-size: 26rpx;
+}
+.l_content::after{
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: -20rpx;
+    top: 36rpx;
+    border-left: 20rpx solid #fff;
+    border-bottom: 20rpx solid #eef0f2;
+}
+.l_first{
+    border-left: 1px solid #f43f3b;
+}
+.l_first::after{
+    background: #f43f3b;
+    border: 2px solid #EEE;
+}
+.l_first_content{
+    background: #ffffff;
+    color: #f43f3b;
+    border: 1px solid #f43f3b;
+}
+.l_first_content::after{
+    border-bottom-color: #f43f3b;
+}

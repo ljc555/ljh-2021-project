@@ -1,0 +1,59 @@
+<!--components/video-swiper/video-swiper.wxml-->
+<view class="container">
+  <swiper class="video-swiper" circular="{{circular}}" easing-function="{{easingFunction}}" vertical current="0" duration="{{duration}}" bindanimationfinish="animationfinish" style="width:{{windowWidth}}px;height:{{windowHeight}}px">
+    <!-- curQueue 循环会导致video重新插入，objectFit 不可变更 -->
+    <swiper-item wx:for="{{curQueue}}" wx:key="*this" style="width:{{windowWidth}}px;height:{{windowHeight}}px">
+      <video id="video_{{index}}" class="video_item" loop="{{loop}}" enable-play-gesture enable-progress-gesture show-center-play-btn="{{false}}" controls="{{false}}" src="{{item.videoUrl}}" data-id="{{item.id}}" object-fit="{{'cover'}}" data-index="{{index}}" bindplay="onPlay"
+        bindpause="onPause" bindended="onEnded" binderror="onError" bindtimeupdate="onTimeUpdate" bindwaiting="onWaiting" bindprogress="onProgress" bindloadedmetadata="onLoadedMetaData" poster="{{item.coverUrl}}"
+         bindtap="clickPause">
+      </video>
+
+      <view class="tools flex-column flex-center">
+        <!-- 用户头像 -->
+        <view class='user-image'>
+          <image class="userinfo-avatar" catchtap='goUserHome' src="{{item.coverUrl}}"></image>
+          <!-- <cover-image class="userinfo-add" wx:if="{{(!isMe)&&(!isfans)}}" src="../resource/images/add.png" catchtap='addFans'></cover-image> -->
+          <!-- <cover-image class="userinfo-add" wx:if="{{(!isMe)&&(isfans)}}" src="../resource/images/guanzhu.png" catchtap='deleteFans'></cover-image> -->
+        </view>
+        <!-- 点赞 -->
+        <view catchtap="likeVideoOrNot">
+          <view class="cuIcon-emojifill font64 color-white" wx:if="{{userLikeVideo}}"></view>
+          <view class="cuIcon-emojifill font64 color-white" wx:else></view>
+          <view class="text margin-top-xs color-white">{{item.visitCount}}</view>
+        </view>
+        <!-- 评论 -->
+        <view catchtap='showComments' class="margin-top color-white">
+          <view class="cuIcon-writefill font64 " bindtap="leaveComment"></view>
+          <view class="text margin-top-xs ">{{item.seconds}}</view>
+        </view>
+        <!-- 分享 -->
+        <view class="margin-top">
+          <view class="cuIcon-share color-white font64" bindtap='shareMe' ></view>
+        </view>
+      </view>
+      <progress class="progress" percent="{{percent}}" activeColor="#ffffff" backgroundColor="#A9A9A9" stroke-width="1" />
+
+
+      <!-- 视频描述  -->
+      <view class='container-words flex-column '>
+        <view class="font31 font-w600">@佰创科技</view>
+        <view class='video-desc font30 margin-top-xs'>我是视频标题 我是视频标题</view>
+
+        <view class="flex-row video-ad margin-top-xs" style="width:{{windowWidth*.5}}px">
+          <image src="https://m.360buyimg.com/common/s310x310_jfs/t1/88050/34/9712/99144/5e12a0deE27ce2623/ef351b2dcc1a127c.jpg" class="ad-img"></image>
+          <view class="flex-column margin-left-xs">
+            <view class="flex-row">
+              <!-- <view>京东</view> -->
+              <view class="color3">商品名字</view>
+            </view>
+            <view class="flex-row margin-top flex-center">
+              <view class="font22 color-main">￥29.99</view>
+              <view style="text-decoration:line-through" class="font20 color6">￥36.99</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- <view class="cuIcon-videofill font64 color6 play-btn" wx:if="{{!isPaly}}"></view> -->
+    </swiper-item>
+  </swiper>
+</view>

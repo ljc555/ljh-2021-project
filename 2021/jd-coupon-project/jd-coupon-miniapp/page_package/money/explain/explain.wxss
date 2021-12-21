@@ -1,0 +1,4 @@
+/* page_package/money/explain/explain.wxss */
+.line-height40{
+    line-height: 40rpx;
+}

@@ -1,0 +1,130 @@
+/* pages/main/home/home.wxss */
+@import "../../../utils/styles/main.wxss";
+@import "../../../utils/styles/icon.wxss";
+@import "../../../utils/styles/animation.wxss";
+@import "../../../utils/styles/base.wxss";
+
+.tab-bg {
+  background-color: #fff;
+  color: #fff;
+  height: 156rpx;
+  border-radius: 100% 100% 100% 100% / 0% 0% 30% 30%
+}
+
+.swiperList-a {
+  width: 90%;
+  margin-left: 5%;
+  height: 156px;
+  border-radius: 12rpx;
+  margin-top: -138rpx;
+}
+
+.swiperList-b {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  height: 84rpx;
+  float: right;
+}
+
+.img-border-radius {
+  border-radius: 12rpx;
+}
+
+.list-item-img {
+  width: 83rpx;
+  height: 83rpx;
+  background-image: linear-gradient(90deg, #f43f3b, #da7068);
+  border-radius: 50%;
+  font-size: 30rpx;
+}
+
+.msg-body {
+  width: 94%;
+  margin-left: 3%;
+  height: 72rpx;
+  align-items: center;
+  border-radius: 8rpx;
+  background-color: #f2f2f2;
+  padding-left: 16rpx;
+}
+
+.title-msg {
+  position: absolute;
+  width: 20%;
+  height: 72rpx;
+  align-items: center;
+}
+
+.swiper-item-text {
+  display: flex;
+  height: 72rpx;
+  margin-left: 30rpx;
+  margin-right: 10rpx;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.line-home{
+  width: 100%;
+  height: 10rpx;
+  background-color: #f2f2f2
+}
+
+.recon{
+  width: 100%;
+}
+
+.ellipsis{
+   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ellipsis-title{
+  margin-top: 10rpx;
+  font-size: 30rpx;
+}
+
+.coupon-pice{
+  width: auto;
+  color: #f43f3b;
+  border: 1px solid #f43f3b;
+  font-size: 22rpx;
+  padding: 6rpx 12rpx;
+  border-radius: 24rpx;
+  margin-top: 10rpx;
+  text-align: center;
+  justify-content: center
+}
+
+.pice-style{
+  align-items: flex-end
+}
+
+/*---------------------*/
+@keyframes zy{
+  10%{
+    transform: rotate(20deg);
+  }
+  20%{
+    transform: rotate(-15deg);
+  }
+  30%{
+    transform: rotate(10deg);
+  }
+  40%{
+    transform: rotate(-10deg);
+  }
+  50%,100%{
+    transform: rotate(0deg);
+  }
+}
+
+.ic-coupon{
+  animation: zy 2s .15s linear infinite;
+  margin-top: 8rpx;
+}
+
+

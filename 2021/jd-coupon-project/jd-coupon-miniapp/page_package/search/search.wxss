@@ -1,0 +1,25 @@
+/* page_package/search/search.wxss */
+.skill{
+    color: #83653F;
+}
+
+.ellipsis{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.ellipsis-title{
+    margin-top: 10rpx;
+    font-size: 30rpx;
+}
+
+.condition-item{
+    width: 25%;
+    height: 56rpx;
+}
+
+.line1{
+    width: 100%;
+    height: 1rpx;
+    background-color: #f2f2f2;
+}

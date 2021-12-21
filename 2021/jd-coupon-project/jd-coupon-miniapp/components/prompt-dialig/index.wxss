@@ -1,0 +1,5 @@
+/* components/prompt-dialig/index.wxss */
+@import "../../utils/styles/main.wxss";
+@import "../../utils/styles/icon.wxss";
+@import "../../utils/styles/animation.wxss";
+@import "../../utils/styles/base.wxss";

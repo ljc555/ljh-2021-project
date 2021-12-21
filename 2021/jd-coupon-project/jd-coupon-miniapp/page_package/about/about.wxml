@@ -1,0 +1,10 @@
+<!--page_package/about/about.wxml-->
+<!--<custom bgColor="bg-gradual-main" isBack="{{true}}">-->
+<!--    <view slot="backText">返回</view>-->
+<!--    <view slot="content" class="font-w600">关于尚橙</view>-->
+<!--</custom>-->
+<web-view src="https://u.jd.com/Satys8"/>
+
+
+
+

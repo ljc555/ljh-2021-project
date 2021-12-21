@@ -1,0 +1,85 @@
+<!--page_package/login/login.wxml-->
+<view class="cu-custom" style="height:{{CustomBar}}px">
+    <view class="cu-bar fixed bg-gradual-main" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+        <view class="action border-custom"
+              style="width:{{Custom.width/3}}px;height:{{Custom.width/3}}px;margin-left:calc(750rpx - {{Custom.right}}px);  border-radius: 50%;">
+            <!-- <text class="cuIcon-back" bindtap="BackPage"></text> -->
+            <text class="cuIcon-homefill" bindtap="toHome"></text>
+        </view>
+        <view class="content" style="top:{{StatusBar}}px">
+            <view class="font34 color-white font-w600">登录</view>
+        </view>
+    </view>
+</view>
+
+<view class="logo-body flex-column flex-center bg-gradual-main" style="height: {{windowHeight * 0.3}}px">
+    <view class="bc-logo flex-row flex-center font-w600" style="margin-top: {{CustomBar}}px">尚橙·优惠券</view>
+    <view style="letter-spacing:2px" class="font26 margin-top-sm">—— B A I C H U A N G ——</view>
+    <view style="letter-spacing:2px" class="font26 margin-top-sm">专注分享京东优惠好货</view>
+</view>
+
+
+<view class="invitation-body flex-column flex-center ">
+
+    <!--输入邀请码-->
+    <view wx:if="{{isBindCode}}" style="width: 80%">
+
+        <input type="text" placeholder="长按可粘贴邀请码" value="{{loginData.invitationCode}}"
+               class="invitation-input font-w600 color3"
+               placeholder-class="input-placeholder" maxlength="10" bindinput="onInput"/>
+
+        <view class="margin-top-sm color-main" style="width: 100%;text-align: right;" bindtap="invitePrompt">没有邀请码?</view>
+
+        <view class="margin-top-xl font24 color8 flex-column" style="width: 100%;text-align: left">
+            提示：请确认您的邀请人，注册后不可以更改！
+        </view>
+
+        <button class="next-btn {{loginData.invitationCode.length > 5 ? 'bg-gradual-orange':'bg-grey'}} margin-top-sm"
+                bindtap="onNext">下一步
+        </button>
+
+    </view>
+
+    <!--bind手机号-->
+    <view wx:if="{{isBindPhone}}" style="width: 80%;">
+        <button class="next-btn bg-gradual-green margin-top" open-type="getPhoneNumber"
+                bindgetphonenumber="getPhoneNumber">微信手机号授权登录
+        </button>
+    </view>
+
+    <!--bind手机号-->
+    <view wx:if="{{isUserInfo}}" style="width: 80%;margin-top: 20%;margin-bottom: 20%">
+        <button class="next-btn bg-gradual-main margin-top" open-type="getUserInfo"
+                bindgetuserinfo="getUserInfo">微信授权登录
+        </button>
+    </view>
+
+</view>
+
+
+<view class="flex-row tag-bar font24 color6 flex-center">
+    <view class="cuIcon-roundcheckfill {{check ? 'color-main':'color8'}} font31"></view>
+    <view>注册即视为您已阅读并同意</view>
+    <view class="color-main">用户协议</view>
+    与
+    <view class="color-main">隐私协议</view>
+</view>
+
+<view class="cu-modal {{invitationDialog ? 'show':''}}">
+    <view class="cu-dialog">
+        <view class="cu-bar bg-white justify-end">
+            <view class="content">邀请人信息</view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class="padding-xl bg-gradual-white1">
+            <image src="{{invitationInfo.avatarUrl}}" class="cu-avatar xl round"/>
+            <view class="font34 color3 margin-top-sm">{{invitationInfo.nickName}}</view>
+        </view>
+        <view class="cu-bar bg-white">
+            <view class="action margin-0 flex-sub  solid-left" bindtap="hideModal" data-iscode="1">取消</view>
+            <view class="action margin-0 flex-sub  solid-left color-main" bindtap="hideModal" data-iscode="0">确认绑定</view>
+        </view>
+    </view>
+</view>

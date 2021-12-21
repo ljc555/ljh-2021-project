@@ -1,0 +1,37 @@
+/* components/new-item/new-item.wxss */
+@import "../../utils/styles/main.wxss";
+@import "../../utils/styles/icon.wxss";
+@import "../../utils/styles/animation.wxss";
+@import "../../utils/styles/base.wxss";
+
+.teach-video{
+    width: 100%;
+    text-align: right;
+    justify-content: right;
+}
+
+.action-btn{
+    padding: 14rpx 30rpx;
+    font-size: 26rpx;
+    border-radius: 8rpx;
+}
+
+.share-btn{
+    width: 164rpx;
+    height: 56rpx;
+    font-size: 26rpx;
+    border-radius: 8rpx;
+}
+
+.cu-dialog1 {
+    position: fixed;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+    width: 680rpx;
+    max-width: 100%;
+    background-color: transparent;
+    border-radius: 10rpx;
+    overflow: hidden;
+}

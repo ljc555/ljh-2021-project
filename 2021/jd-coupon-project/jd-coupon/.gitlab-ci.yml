@@ -1,0 +1,79 @@
+stages:
+  - build
+  - run
+
+
+variables:
+  app_service: jd-coupon      #服务名称
+  app_service_port: 8080  #服务端口
+  app_artifactId: jd-union-service   #项目工程artifactId
+  app_version: 0.0.1-SNAPSHOT #项目工程version
+  app_serviceDir: jd-union-service #需要运行/发布的服务工程名称（相对主工程目录）
+  app_jarFile: ${app_artifactId}-${app_version}.jar  #打包后的jar名称
+  app_image: registry.cn-shanghai.aliyuncs.com/csbaic/jd-coupon:${app_version} #Docker镜像名称
+  app_containerName: ${app_service}    #容器名称
+  app_network: jd-coupon    #服务网格网络名称，所有服务都应该在同一个网络中
+
+#
+#build-dev-image:
+#  stage: build
+#  tags:
+#    - video
+#  only:
+#    refs:
+#      - dev
+#  script:
+#    - cd ${app_serviceDir}
+#    - wget -O Dockerfile https://gitlab.com/ruanchengtech/rc-public/raw/master/DockerFile/ai-photo-Jre8Dockerfile
+#    - mvn clean package
+#    - docker rmi -f ${app_image} || true
+#    - docker build --build-arg APP_JAR_FILE=target/${app_jarFile} --tag=${app_image} .
+#
+#
+#run-dev:
+#  stage: run
+#  tags:
+#    - video
+#  dependencies:
+#    - build-dev-image
+#  only:
+#    refs:
+#      - dev
+#  script:
+#    - docker network create --attachable --driver bridge ${app_network} || true
+#    - docker rm -f  ${app_containerName} || true
+#    - docker run --name ${app_containerName} -d  --network ${app_network} -p ${app_service_port}:8080 ${app_image}
+#
+
+build-prod-image:
+  stage: build
+  tags:
+    - aliyun
+    - i-uf659w5lxc5ch9usz6rs
+    - prod
+    - csbaic
+  only:
+    refs:
+      - master
+  script:
+    - cd ${app_serviceDir}
+    - mvn clean package -U
+    - docker rmi -f ${app_image} || true
+    - docker build --no-cache  --build-arg APP_JAR_FILE=target/${app_jarFile} --tag=${app_image} .
+
+run-prod:
+  stage: run
+  tags:
+    - aliyun
+    - i-uf659w5lxc5ch9usz6rs
+    - prod
+    - csbaic
+  dependencies:
+    - build-prod-image
+  only:
+    refs:
+      - master
+  script:
+    - docker rm -f  ${app_containerName} || true
+    - docker run --name ${app_containerName} -d -e SPRING.PROFILES.ACTIVE=prod -v /etc/localtime:/etc/localtime -v /etc/timezone:/etc/timezone  --network csbaic -p ${app_service_port}:8080 ${app_image}
+

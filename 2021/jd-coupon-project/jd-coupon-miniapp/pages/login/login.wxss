@@ -1,0 +1,75 @@
+/* pages/login/login.wxss */
+
+.bg-gradual-white1 {
+  color: white;
+  background-image: white;
+}
+
+.logo-body{
+    border-radius: 100% 100% 100% 100% / 0% 0% 30% 30%
+}
+
+.bc-logo {
+  font-family: "黑体";
+  font-size: 54rpx;
+  border-radius: 50;
+}
+
+.share-img {
+  width: 86%;
+  height: 256rpx;
+  border-radius: 12rpx;
+}
+
+.btn-style {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.login-btn {
+  border-radius: 12rpx;
+}
+
+.invitation-input{
+  width: 100%;
+  border-bottom: 1px solid #f2f2f2;
+  height: 96rpx;
+  line-height: 96rpx;
+  text-align: center;
+  font-size: 32rpx;
+    margin-top: 20%;
+    letter-spacing:2px
+}
+
+.invitation-body{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.input-placeholder{
+   font-size: 32rpx;
+   color: #888888;
+   font-weight: 200
+}
+
+.next-btn{
+    width: 100%;
+}
+
+.policy{
+    text-align: left;
+    justify-content: left;
+    align-items: center;
+    width: 80%;
+}
+
+.tag-bar{
+    position: absolute;
+    bottom: 5%;
+    width: 100%;
+}

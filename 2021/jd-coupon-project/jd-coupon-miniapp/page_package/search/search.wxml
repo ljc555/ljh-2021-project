@@ -1,0 +1,129 @@
+<!--page_package/search/search.wxml-->
+<view>
+<!--    <custom bgColor="bg-gradual-main" isBack="{{true}}">-->
+<!--        <view slot="backText">返回</view>-->
+<!--        <view slot="content" class="font-w600">搜索商品</view>-->
+<!--    </custom>-->
+    <!-- 搜索框 -->
+    <view class="cu-bar search bg-white">
+        <view class="search-form round">
+            <text class="cuIcon-search"></text>
+            <input type="text" placeholder="搜索商品、优惠券" focus="true" value="{{searchContent}}" confirm-type="搜索"
+                   bindinput="bindinput"></input>
+        </view>
+        <view class="action">
+            <view class="round bg-red shadow-blur font20 flex-row flex-center" style="height: 50rpx;width: 112rpx"
+                  bindtap="onSerach" data-index="0">搜优惠券
+            </view>
+            <view class="round bg-red shadow-blur font20 flex-row flex-center margin-left-sm"
+                  style="height: 50rpx;width: 128rpx" bindtap="onSerach" data-index="1">搜京东全站
+            </view>
+        </view>
+    </view>
+
+    <!--筛选条件-->
+    <view class="line1"></view>
+    <view class="flex-row" wx:if="{{isFilter}}">
+        <view class="flex-row condition-item flex-center font24 {{curID == 0 ? 'color-main':'color4'}}" data-index="0"
+              bindtap="onSort">综合排序
+        </view>
+        <view class="flex-row condition-item flex-center font24 {{curID == 1 ? 'color-main':'color4'}}" data-index="1"
+              bindtap="onSort">高返佣比
+        </view>
+        <view class="flex-row condition-item flex-center font24 {{curID == 2 ? 'color-main':'color4'}}" data-index="2"
+              bindtap="onSort">
+            <view>销量</view>
+            <view wx:if="{{curID == 2}}">
+                <image style="width: 32rpx;height: 32rpx;"
+                       wx:if="{{salesSort}}"
+                       src="../../images/ic_search_bottom_cur.png"></image>
+                <image style="width: 32rpx;height: 32rpx;"
+                       wx:else
+                       src="../../images/ic_search_top_cur.png"></image>
+            </view>
+            <image style="width: 32rpx;height: 32rpx;"
+                   wx:else
+                   src="../../images/ic_search_bottom.png"></image>
+        </view>
+        <view class="flex-row condition-item flex-center font24 {{curID == 3 ? 'color-main':'color4'}}" data-index="3"
+              bindtap="onSort">
+            <view>价格</view>
+            <view wx:if="{{curID == 3}}">
+                <image style="width: 32rpx;height: 32rpx;"
+                       wx:if="{{priceSort}}"
+                       src="../../images/ic_search_bottom_cur.png"></image>
+                <image style="width: 32rpx;height: 32rpx;"
+                       wx:else
+                       src="../../images/ic_search_top_cur.png"></image>
+            </view>
+            <image style="width: 32rpx;height: 32rpx;"
+                   wx:else
+                   src="../../images/ic_search_bottom.png"></image>
+        </view>
+    </view>
+    <view wx:if="{{isCoupon}}">
+        <view class="line1"></view>
+        <view class="cu-list menu no-border">
+            <view class="cu-item" style="padding:0rpx 40rpx">
+                <view class="content font24">
+                    <view class="color4 font24">仅显示优惠券商品</view>
+                </view>
+                <view class="action">
+                    <switch class="red sm" bindchange="onCheck" checked="{{isCheck}}"></switch>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <scroll-view scroll-y="{{true}}"
+                 style="height: {{windowHeight  - 56}}px"
+                 bindscrolltolower="more"
+                 lower-threshold="156"
+                 scroll-top='{{scrolltop}}'>
+        <view id="search-history" style="height: 1px;width: 100%"></view>
+        <view wx:if="{{!searchContent}}">
+            <!--省钱技巧-->
+            <view class="flex-column" style="background-color: #FBF5F2;width: 96%;margin-left: 2%;border-radius: 5rpx">
+                <view class="skill font-w600 font22 flex-column flex-center margin-top-sm">省钱技巧：京东领券后再来惠享购买享受用券和返利双重优惠
+                </view>
+                <view class="flex-row flex-center margin-bottom-sm">
+                    <view wx:for="{{numList}}" wx:key="*this" class="flex-column flex-center">
+                        <view class="flex-row flex-center margin-top-sm">
+                            <view style="width: 56rpx;height: 56rp;border: 1rpx solid #ECD0B9;color: #83653F;"
+                                  class="flex-row flex-center margin-left font26">
+                                {{index + 1}}
+                            </view>
+                            <image src="../../images/ic_search_right.png"
+                                   class="margin-left"
+                                   wx:if="{{index != 3}}"
+                                   style="width: 64rpx;height: 24rpx"/>
+                        </view>
+                        <view class="margin-right font20 skill margin-top-sm" wx:if="{{index != 3}}">{{item.name}}
+                        </view>
+                        <view class="font20 skill margin-top-sm" wx:else style="margin-left: 40rpx">{{item.name}}</view>
+                    </view>
+                </view>
+            </view>
+            <!-- 历史 -->
+            <view wx:if="{{searchHistory.length != 0}}">
+                <view class="cu-bar bg-white solid-bottom">
+                    <view class="action">搜索记录</view>
+                    <button class="cu-btn bg-gradual-white shadow-blur round margin-right-sm" bindtap="onClear"
+                            style="background:#fff">
+                        <text class="cuIcon-deletefill"></text>
+                    </button>
+                </view>
+                <view class="padding-sm bg-white solid-bottom">
+                    <view class="cu-tag radius ellipsis margin-top-xs" wx:for="{{searchHistory}}"
+                          wx:key="*this"
+                          style="max-width: {{windowWidth * 0.3}}px"
+                          bindtap="historyItem"
+                          data-item="{{item}}">{{item}}
+                    </view>
+                </view>
+            </view>
+        </view>
+        <type id="search-product-list"/>
+    </scroll-view>
+
+</view>

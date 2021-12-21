@@ -1,0 +1,30 @@
+一、设置maven仓库
+   找到 maven老家 conf/settings.xml，
+   在标签内增加下面方式的阿里云maven镜像（删除自己的镜像配置）， 最终结果见下面：
+
+    <mirrors>
+           <mirror>
+                <id>nexus-aliyun</id>
+                <mirrorOf>*,!jeecg,!jeecg-snapshots,!getui-nexus</mirrorOf>
+                <name>Nexus aliyun</name>
+                <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            </mirror>
+     </mirrors>
+
+    此配置重点在这句话<mirrorOf>*,!jeecg,!jeecg-snapshots</mirrorOf>
+    如果不加这句话，默认所有的依赖都会去阿里云仓库下载，加上后jeecg的依赖包就可以从jeecg私服下载了。
+
+二、修改数据库地址
+   修改jeecg-boot-module-system下的application-dev.yml文件
+
+三、运行java
+    JeecgSystemApplication.java文件，启动单个项目
+
+四、工程说明
+    项目结构
+    ├─jeecg-boot-parent（父POM： 项目依赖、modules组织）
+    │  ├─jeecg-boot-base（共通模块： 工具类、config、权限、查询过滤器、注解、接口等）
+    │  ├─jeecg-boot-module-demo    示例代码
+    │  ├─jeecg-boot-module-system （系统管理权限等功能） -- 默认作为启动项目
+    │  ├─jeecg-boot-starter（微服务starter模块，不需要微服务可以删掉）
+    │  ├─jeecg-cloud-module（微服务生态模块，不需要微服务可以删掉）

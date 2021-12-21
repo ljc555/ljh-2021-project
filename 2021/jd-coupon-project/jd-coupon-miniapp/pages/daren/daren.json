@@ -1,0 +1,6 @@
+{
+
+  "usingComponents": {
+      "bc-scroll": "/components/refresh/refresh"
+  }
+}

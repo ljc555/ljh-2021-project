@@ -1,0 +1,46 @@
+/* components/question/question.wxss */
+@import "../../utils/styles/main.wxss";
+@import "../../utils/styles/icon.wxss";
+@import "../../utils/styles/animation.wxss";
+@import "../../utils/styles/base.wxss";
+
+.question-icon{
+    width: 218rpx;
+    align-items: start;
+    text-align: center;
+    justify-content: center;
+}
+
+.question-list{
+    border-left: 1px solid #f2f2f2;
+}
+
+.question-item{
+    height: 84rpx;
+    border-top: 1px solid #f2f2f2;
+    align-items: center;
+    width:  calc(100vw - 250rpx);
+    padding-left: 20rpx;
+}
+
+.ellipsis{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.shrink-btn{
+    background-color: white;
+    padding: 8rpx 16rpx;
+    border-radius: 24rpx;
+    margin-top: -32rpx;
+
+}
+
+.type-icon{
+    width: 56rpx;
+    height: 56rpx;
+    background-image: linear-gradient(90deg, #f43f3b, #da7068);
+    border-radius: 50%;
+    color: white;
+}

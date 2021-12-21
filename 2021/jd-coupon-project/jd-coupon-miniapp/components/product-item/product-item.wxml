@@ -1,0 +1,68 @@
+<!--components/product-item/product-item.wxml-->
+<view>
+    <view class="flex-row" style="margin-top: 20rpx;">
+        <image src="{{productItem.images[0]}}"
+               style="width:{{windowWidth*0.38}}px;height:{{windowWidth*0.35}}px;border-radius: 8rpx;margin-left:20rpx"></image>
+        <view class="flex-column">
+            <view class="flex-row margin-top-xs">
+                <view class="tag-product">京东</view>
+                <view class="title-style font28 color3 ellipsis" style="width:{{windowWidth * 0.58}}px">
+                    {{productItem.skuName}}
+                </view>
+            </view>
+
+            <view class="flex-row font20 color8 margin-left-sm margin-top-xs">
+                <view>京东价</view>
+                <text style="text-decoration:line-through;margin-top:5rpx" class="text-price font20">{{productItem.priceInfo.price}}</text>
+                <view class="comment flex-row">
+                    <view>{{productItem.comments}}条评论</view>
+                    <view class="margin-left-xs">{{productItem.goodCommentsShare}}%好评率</view>
+                </view>
+            </view>
+
+            <view style="width:{{windowWidth * 0.20}}px;height: 1.2rem;" class="margin-left-sm margin-top-sm">
+                <view class="coupon-item">
+                    <view class="style-three bg-gradual-main flex-row flex-center">
+                        <view class="font20" wx:if="{{productItem.coupons[0].discount}}">优惠券
+                            <text class="text-price font20">{{productItem.coupons[0].discount ?
+                                productItem.coupons[0].discount : 0}}
+                            </text>
+                        </view>
+                        <view class="font20" wx:else>
+                            <text class="font20">{{productItem.commissionInfo.rebateHint}}
+                            </text>
+                        </view>
+                        <view class="get-btn"></view>
+                    </view>
+                </view>
+            </view>
+
+            <view class="flex-row margin-left-sm margin-top-sm" style=" align-items: center;">
+                <view class="color-main font26" wx:if="{{productItem.coupons[0].discount}}">券后价
+                    <text class="text-price color-main font34 font-w600">{{productItem.priceInfo.lowestCouponPrice ?
+                        productItem.priceInfo.lowestCouponPrice:productItem.priceInfo.price}}
+                    </text>
+                </view>
+                <view class="color-main font26" wx:else>返利价
+                    <text class="text-price color-main font34 font-w600">{{productItem.priceInfo.lowestRebatePrice}}
+                    </text>
+                </view>
+                <view class="comment">
+                    <view class="round bg-red shadow-blur font20 flex-row flex-center"
+                          style="height: 40rpx;width: 96rpx">马上抢
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="flex-row margin-top margin-left" style="text-align: end;justify-content: end"
+        wx:if="{{productItem.commissionInfo.commissionHint}}">
+        <view class="font31 font-w600"></view>
+        <view class="flex-row flex-center" style="height: 40rpx">
+            <view class="cu-btn round bg-yellow shadow-blur"
+                  style="height:40rpx;  font-size: 20rpx;color: #A78C72;background-color: #FFEED5;right: 20rpx;position: absolute;right: 20rpx">{{productItem.commissionInfo.commissionHint}} </view>
+        </view>
+    </view>
+    <view class="line-division"></view>
+
+</view>

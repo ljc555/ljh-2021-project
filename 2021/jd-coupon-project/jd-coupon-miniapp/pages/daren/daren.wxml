@@ -1,0 +1,62 @@
+<!--pages/daren/daren.wxml-->
+<view style="min-height:{{windowHeight}}px;width:{{windowWidth}}px;background-color: #f2f2f2;">
+  <view class="cu-custom" style="height:{{CustomBar}}px">
+    <view class="cu-bar fixed" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;background-color: #fff;">
+      <view class="action">
+        <scroll-view scroll-x class="bg-white nav" scroll-with-animation scroll-left="{{scrollLeft}}">
+          <view class="cu-item {{index==TabCur?'color-main cur font34 font-w600':''}}" wx:for="{{tabs}}" wx:key="*this" bindtap="tabSelect" data-id="{{index}}">
+            {{item}}
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{TabCur == 1}}">
+    <view class="flex-column flex-center empty-data">
+      <view class="cuIcon-copy color8 margin-top" style="font-size:128rpx"></view>
+      <view class="font32 color8">暂无数据</view>
+    </view>
+  </view>
+
+  <view wx:if="{{TabCur == 0}}">
+    <bc-scroll id="scroll" requesting="{{requesting}}" empty-show="{{emptyShow}}" end="{{end}}" listCount="0" has-top="{{hasTop}}" enable-back-to-top="{{enableBackToTop}}" refresh-size="{{refreshSize}}" bottom-size="{{bottomSize}}" color="{{color}}" bind:refresh="refresh"
+      bind:more="more">
+
+      <view>
+        <!-- <button class="cu-btn round" bindtap="togo">视频播放</button> -->
+        <view class="content-bg">
+          <view class="content">
+            <view class="left">
+              <view wx:for="{{videoList}}" wx:key="index" bindtap="togo" data-index="{{index}}">
+                <template is="template" wx:if="{{index%2==0}}" data="{{object : item}}" />
+              </view>
+            </view>
+
+            <view class="right">
+              <view wx:for="{{videoList}}" wx:key="index" bindtap="togo" data-index="{{index}}">
+                <template is="template" wx:if="{{index%2==1}}" data="{{object : item}}" />
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <template name="template">
+          <view class="item">
+            <image class="item-img" src="{{object.coverUrl}}" mode="widthFix"></image>
+            <view class="item-title">{{object.name}}</view>
+            <text class='description'>{{object.name}}</text>
+            <view class="author-view">
+              <image class="avatar" src="{{object.coverUrl}}"></image>
+              <text class="author-name">发布者</text>
+              <text class="time">2020-03-03</text>
+            </view>
+          </view>
+        </template>
+
+      </view>
+
+    </bc-scroll>
+  </view>
+
+</view>

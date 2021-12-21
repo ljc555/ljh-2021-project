@@ -1,0 +1,24 @@
+<!--page_package/video-course/video-course.wxml-->
+<!--<custom bgColor="bg-gradual-main" isBack="{{true}}">-->
+<!--    <view slot="content" class="font-w600 font34">视频教程</view>-->
+<!--</custom>-->
+<!--object-fit属性：cover-->
+<video id="video_0"
+       class="video_item"
+       loop="{{false}}"
+       style="height: {{windowHeight}}px"
+       enable-play-gesture
+       enable-progress-gesture
+       show-center-play-btn="{{false}}"
+       controls="{{true}}"
+       src="{{url}}"
+       object-fit="{{'contain'}}"
+       bindplay="onPlay"
+       autoplay="{{true}}"
+       bindpause="onPause"
+       bindended="onEnded"
+       binderror="onError"
+       bindtimeupdate="onTimeUpdate"
+       bindwaiting="onWaiting"
+       bindprogress="onProgress">
+</video>

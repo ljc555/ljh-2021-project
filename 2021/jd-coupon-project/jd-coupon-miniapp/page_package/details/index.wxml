@@ -1,0 +1,169 @@
+<!--page_package/details/index.wxml-->
+
+
+
+<view style="z-index: 100;position: absolute;top: 0;width: 100%;background-color: white">
+<!--    <view class='cu-custom'>-->
+<!--        <view class="cu-bar fixed bg-shadeTop" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">-->
+<!--            <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">-->
+<!--                <text class='cuIcon-back'></text>-->
+<!--                返回-->
+<!--            </navigator>-->
+<!--        </view>-->
+<!--    </view>-->
+
+    <scroll-view scroll-y class="scrollPage">
+        <swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true"
+                style="height:{{windowWidth * 0.9}}px" interval="5000" duration="500">
+            <swiper-item wx:for="{{productDetails.images}}" wx:key="*this" bindtap="imgPreview" data-index="{{index}}">
+                <image src="{{item}}" style="height:{{windowWidth * 0.9}}px"></image>
+            </swiper-item>
+        </swiper>
+
+        <view>
+            <view class="flex-row">
+                <view class="tag-product margin-top-sm">京东</view>
+                <view class="title-style color3 margin-top-sm font-w600"
+                      bindtap="copySkuName"
+                      style="width:{{windowWidth * 0.96}}px">
+                    {{productDetails.skuName}}
+                </view>
+            </view>
+
+            <view class="flex-row font24 color8 margin-left-sm margin-top-xs">
+                <view>京东价</view>
+                <view style="text-decoration:line-through">￥ {{productDetails.priceInfo.price}}</view>
+                <view class="comment flex-row">
+                    <view>评论数 {{productDetails.comments}}</view>
+                    <view class="margin-left-sm">好评率 {{productDetails.goodCommentsShare}}%</view>
+                    <view class="margin-left-sm color3" bindtap="onDetails">查看详情 ></view>
+                </view>
+            </view>
+
+           <view class="flex-row font-center">
+               <view style="width:{{windowWidth * 0.26}}px" class="margin-left-sm margin-top">
+                   <view class="coupon-item">
+                       <view class="style-three bg-gradual-main flex-row flex-center">
+                           <view wx:if="{{productDetails.coupons.length > 0 }}">优惠券
+                               <text class="text-price">{{productDetails.coupons[0].discount}}</text>
+                           </view>
+                           <view wx:else>
+                               <text class="">{{productDetails.commissionInfo.rebateHint}}</text>
+                           </view>
+                           <view class="get-btn"></view>
+                       </view>
+                   </view>
+               </view>
+               <view wx:if="{{productDetails.coupons.length == 0 }}" class="margin-top margin-left text-orange">注：返现给下单购买用户</view>
+           </view>
+            <view class="margin-left-sm margin-top font28 color-main"
+                  wx:if="{{productDetails.coupons.length > 0 }}">券后价￥
+                <text class="color-main font38 font-w600">{{productDetails.priceInfo.lowestCouponPrice ?
+                    productDetails.priceInfo.lowestCouponPrice:productDetails.priceInfo.price}}
+                </text>
+            </view>
+            <view class="margin-left-sm margin-top font28 color-main"
+                    wx:else>返利价￥
+                <text class="color-main font38 font-w600">{{productDetails.priceInfo.lowestRebatePrice}}
+                </text>
+            </view>
+        </view>
+
+        <view class="line1"></view>
+
+        <view class="cu-item" bindtap="copySkuID">
+            <view class="content">
+                <text class="text-grey font28 font-w600 color3 margin-left-sm">商品编号：{{productDetails.skuId}}</text>
+            </view>
+        </view>
+        <view class="line1"></view>
+
+        <view class="cu-item">
+            <view class="content flex-row color8 font24">
+                <view style="width: 33%" class="flex-row flex-center">
+                    <text class="cuIcon-roundcheck margin-right-xs" style="font-size: 28rpx;margin-top: 5rpx"></text>京东商品
+                </view>
+                <view style="width: 33%" class="flex-row flex-center">
+                    <text class="cuIcon-roundcheck margin-right-xs" style="font-size: 28rpx;margin-top: 5rpx"></text>品质保证
+                </view>
+                <view style="width: 33%" class="flex-row flex-center">
+                    <text class="cuIcon-roundcheck margin-right-xs" style="font-size: 28rpx;margin-top: 5rpx"></text>无忧售后
+                </view>
+            </view>
+        </view>
+        <view class="line1"></view>
+
+        <view>
+            <image wx:for="{{productDetails.images}}" src="{{item}}" wx:key="*this" bindtap="imgPreview" data-index="{{index}}"
+                   style="width:{{windowWidth}}px;height:{{windowWidth * 0.9}}px"></image>
+        </view>
+
+        <view class='cu-tabbar-height'></view>
+    </scroll-view>
+
+    <view class="cu-bar bg-white tabbar border shop bottom-bar">
+        <view class="action" bindtap="goHome">
+            <view class="cuIcon-home"></view>
+            首页
+        </view>
+        <button class="action" open-type="contact" style="background-color: white;color: #666666">
+            <view class="cuIcon-service"></view>
+            反馈
+        </button>
+        <view class="action" bindtap="onShowModel">
+            <view class="cuIcon-share"></view>
+            小程序
+        </view>
+        <view class="bg-orange submit" bindtap="onShare" data-index="1">分享海报</view>
+        <view class="bg-red submit" bindtap="goToJD">京东购买</view>
+    </view>
+</view>
+
+
+<view style="position: absolute;z-index: 2048">
+    <view class="cu-modal {{invitationDialog ? 'show':''}} flex-column flex-center">
+        <view class="cu-dialog1 color-white flex-column flex-center">
+            <view class="flex-column flex-center">
+                <text class="cuIcon-roundclosefill color-white" style="font-size: 32px" bindtap="onClose"></text>
+                <view style="width: {{imgWidth}}px;height: {{imgHeight}}px">
+                   <view wx:if="{{shareType == 1}}">
+                       <image src="{{synthesisImg}}"
+                              wx:if="{{synthesisImg}}"
+                              style="width: {{imgWidth}}px;height: {{imgHeight}}px;"/>
+                       <canvas canvas-id="myCanvas"
+                               class="share-img margin-top-sm bg-white"
+                               wx:else
+                               style="width: {{imgWidth}}px;height: {{imgHeight}}px;"></canvas>
+                   </view>
+                    <view wx:else>
+                        <image src="{{appImg}}"
+                               wx:if="{{appImg}}"
+                               style="width: {{imgWidth}}px;height: {{imgHeight}}px;"/>
+                        <canvas canvas-id="myCanvas1"
+                                class="share-img margin-top-sm bg-white"
+                                wx:else
+                                style="width: {{imgWidth}}px;height: {{imgHeight}}px;"></canvas>
+                    </view>
+                </view>
+
+                <view class="cu-btn round  shadow-blur colorf2 margin-top"
+                      style="width: 500rpx;background-color: #f43f3b;height: 72rpx"
+                      bindtap="saveImg">
+                    保存到手机相册
+                </view>
+                <view class="cu-btn round  shadow-blur colorf2 margin-top"
+                      style="width: 500rpx;background-color: #ff9700;height: 72rpx"
+                      bindtap="previewImg">
+                    预览海报长按分享
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}" bindtap="onCloseModel">
+        <view class="cu-dialog">
+            <button class="share-btn" bindtap="onShare" data-index="0">分享小程序海报（可锁粉）</button>
+            <button class="share-btn" open-type="share">分享小程序（可锁粉）</button>
+        </view>
+    </view>
+</view>

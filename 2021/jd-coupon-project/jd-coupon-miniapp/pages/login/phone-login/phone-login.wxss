@@ -1,0 +1,6 @@
+/* page_package/login/phone-login/phone-login.wxss */
+@import "../login.wxss";
+
+.button::after {
+    border: none;
+}

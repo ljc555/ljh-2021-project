@@ -1,0 +1,12 @@
+/* page_package/order/order.wxss */
+
+.time-select{
+    background-color: #f2f2f2;
+    padding: 4rpx;
+}
+
+.scroll-vi{
+    background-color: #f2f2f2;
+    min-height: 500rpx;
+    width: 100%;
+}

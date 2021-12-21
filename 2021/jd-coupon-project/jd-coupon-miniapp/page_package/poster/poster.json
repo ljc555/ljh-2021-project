@@ -1,0 +1,9 @@
+{
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "邀请海报",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "poster-item": "/components/poster/poster"
+  }
+}

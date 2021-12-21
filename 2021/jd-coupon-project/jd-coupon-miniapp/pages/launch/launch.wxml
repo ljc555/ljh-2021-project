@@ -1,0 +1,21 @@
+<!--pages/launch/launch.wxml-->
+<view class="launch flex-center">
+   <view class="flex-center interval flex-row">{{interval}}</view>
+
+
+    <view class="text-center">
+        <view class="bg-gradual-blue radius padding shadow-blur text-center margin">
+
+            <text class="font32 color-white">欢 迎</text>
+
+            <button open-type="getUserInfo"
+                    bindgetuserinfo="getNumber"
+                    wx:if="{{!isAuth}}">授权登录</button>
+
+        </view>
+    </view>
+
+    <view class="cu-btn" bindtap="getInfo">dddddd</view>
+
+
+</view>

@@ -1,0 +1,1 @@
+ALTER TABLE jd_order_sku CHANGE sub_unionId sub_union_id varchar(255) NOT NULL DEFAULT '' COMMENT '子联盟ID(需要联系运营开放白名单才能拿到数据)';

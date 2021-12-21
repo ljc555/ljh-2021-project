@@ -1,0 +1,93 @@
+<!--page_package/money/quota/quota.wxml-->
+<!--<custom bgColor="bg-gradual-main" isBack="{{true}}">-->
+<!--    <view slot="backText">返回</view>-->
+<!--    <view slot="content" class="font-w600">提现到微信</view>-->
+<!--</custom>-->
+
+<view class="cash-item flex-row">
+    <view class="flex-column">
+        <view class="color3 font-w600 font30 margin-left-sm margin-top-xs">可提现金额：￥{{money}}</view>
+        <view class="color6 margin-top-xs margin-left-sm">每次最少提现1元</view>
+    </view>
+</view>
+
+<view class="cash-item flex-row" style="margin-top: 1rpx">
+    <view class="cash-item-icon flex-row flex-center font42 color3">￥</view>
+    <input type="number" placeholder="请输入提现金额"
+           value="{{cashMoney}}"
+           bindinput="onInput"
+           data-index="0"
+           bindblur="onBlur"
+           class="font42 color3 cash-item-money margin-left-xs"/>
+    <view style="width: 144rpx;align-items: center;color: #3595f5" bindtap="onQuota">全部提现</view>
+</view>
+
+<view style="width: 94%;margin-left: 3%">
+    <view class="color-main font26 margin-top-xs" wx:if="{{inputRemind}}">{{inputRemind}}</view>
+    <view class="margin-top-sm" style="line-height: 40rpx;color:#94ccd4">
+        请确保已注册尚橙账号的微信号（昵称：{{userInfo.nickName}}）已绑定过银行卡
+    </view>
+</view>
+
+<form style="background-color: white">
+    <view class="cu-form-group margin-top-sm">
+        <view class="title" style="color: #666666;font-size: 24rpx">完善提现信息</view>
+<!--        <text class="line-height font20 color8">（注：收款人姓名与身份证需要与微信实名认证身份证信息一致）</text>-->
+    </view>
+    <view class="cu-form-group">
+        <input placeholder="请输入真实姓名（与微信绑定银行卡对应）"
+               type="text"
+               bindinput="onInput1"
+               data-type="1"
+               class="color3"></input>
+    </view>
+    <view class="cu-form-group">
+        <input placeholder="请输入身份证号（与微信绑定银行卡对应）"
+               type="number"
+               bindinput="onInput1"
+               data-type="2"
+               class="color3"></input>
+    </view>
+    <view class="cu-form-group">
+        <view class="title color3">{{phone}}（不可修改）</view>
+    </view>
+    <view class="cu-form-group">
+        <input placeholder="请输入短信验证码"
+               type="number"
+               bindinput="onInput1"
+               data-type="3"
+               class="color3"></input>
+        <button class="cu-btn shadow {{isDisabled?'send-btn':'send-btn-def'}} text-white"
+                disabled="{{isDisabled}}"
+                style="background-color:{{isDisabled?'#888888':'#3595f5'}};color:{{isDisabled?'#ededed':''}};"
+                bindtap="sendCode">{{promptMsg}}</button>
+    </view>
+</form>
+
+<view class="margin-left-sm color6 font26">注：申请提现后1~3个工作日到账</view>
+
+<button class="cu-btn shadow margin-top-xl cash-btn bg-gradual-main font31" bindtap="onSubmit">提现到微信零钱</button>
+
+<view class="cu-modal {{invitationDialog ? 'show':''}}">
+    <view class="cu-dialog">
+        <view class="cu-bar bg-white justify-end">
+            <view class="content">提示</view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class="padding-xl bg-gradual-white1 flex-column flex-center font30">
+            <view class="text-left flex-column">
+                <text class="line-height">提现金额：￥{{sumInfo.amount}}</text>
+                <text class="line-height margin-top-xs">姓名：{{sumInfo.payeeName}}</text>
+                <text class="line-height margin-top-xs">身份证：{{sumInfo.payeeCardId}}</text>
+                <text class="line-height margin-top-xs">微信号：{{sumInfo.wechatId}}</text>
+            </view>
+        </view>
+        <view class="cu-bar bg-white">
+            <view class="action margin-0 flex-sub  solid-left" bindtap="hideModal" data-iscode="1">取消</view>
+            <view class="action margin-0 flex-sub  solid-left color-main" bindtap="hideModal" data-iscode="0">确认提现
+            </view>
+        </view>
+    </view>
+</view>

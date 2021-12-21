@@ -1,0 +1,17 @@
+/* page_package/video-play/video-play.wxss */
+
+page {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}

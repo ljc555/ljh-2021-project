@@ -1,0 +1,57 @@
+<!--page_package/login/phone-login/phone-login.wxml-->
+<!--page_package/login/login.wxml-->
+<view class="cu-custom" style="height:{{CustomBar}}px">
+    <view class="cu-bar fixed bg-gradual-white1" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+        <view class="action border-custom"
+              style="width:{{Custom.width/3}}px;height:{{Custom.width/3}}px;margin-left:calc(750rpx - {{Custom.right}}px);  border-radius: 50%;">
+            <!-- <text class="cuIcon-back" bindtap="BackPage"></text> -->
+            <text class="cuIcon-homefill" bindtap="toHome"></text>
+        </view>
+        <view class="content" style="top:{{StatusBar}}px">
+            <view class="font34 color3 font-w600">登录</view>
+        </view>
+    </view>
+</view>
+
+
+<view class="logo-body flex-column flex-center color3">
+    <view class="bc-logo flex-row flex-center font-w600" style="margin-top: {{CustomBar}}px">尚橙·优惠券</view>
+    <view style="letter-spacing:2px" class="font26 margin-top-sm">—— B A I C H U A N G ——</view>
+    <view style="letter-spacing:2px" class="font26 margin-top-sm">专注分享京东优惠好货</view>
+</view>
+
+<view class="invitation-body flex-column flex-center " animation="{{animationData}}">
+
+    <!--绑定用户信息-->
+    <view style="width: 80%;">
+        <button class="next-btn bg-gradual-main margin-top"
+                open-type="getUserInfo"
+                bindgetuserinfo="getUserInfo">微信授权登录
+        </button>
+    </view>
+</view>
+
+<view class="font24 color6 tag-bar flex-row flex-center">京东99%商品都有优惠券或返利</view>
+
+
+<view class="cu-modal {{invitationDialog ? 'show':''}}">
+    <view class="cu-dialog">
+        <view class="cu-bar bg-white justify-end">
+            <view class="content">授权提示</view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class="padding-xl bg-gradual-white1">
+            <view class="font34 color3 margin-top-sm margin-bottom-sm">系统想获取您的微信头像和昵称</view>
+        </view>
+        <view class="cu-bar bg-white">
+            <view class="action margin-0 flex-sub  solid-left" bindtap="hideModal" data-iscode="1">取消</view>
+            <button class="action margin-0 flex-sub  solid-left button color-main" bindtap="hideModal"
+                    open-type="getUserInfo"
+                    bindgetuserinfo="getUserInfo"
+                    data-iscode="0">确认</button>
+        </view>
+    </view>
+</view>
+

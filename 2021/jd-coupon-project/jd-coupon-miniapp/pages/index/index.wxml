@@ -1,0 +1,68 @@
+<!--<main id="home-main" bind:NavChangen="NavChangen"/>-->
+<!-- 搜索框 -->
+<view class="tab-bg padding-xs bg-white">
+    <view class="flex-row flex-center">
+        <view class="transfer round shadow-blur cuIcon-link"
+              bindtap="onTransfer"
+              style="font-size: 22rpx"
+              wx:if="{{isSuperVip}}"><image style="width: 20rpx;height: 20rpx" class="margin-right-xs" src="../../images/ic_link.png"/>转链</view>
+        <view class="flex-row flex-center round color6 {{isSuperVip?'search-style1':'search-style'}}"
+              style="background-color: #f2f2f2;"
+              bindtap="goToSearch">
+            <text class="cuIcon-search"></text>
+            <input type="text" disabled="true" placeholder="搜索商品、优惠券" confirm-type="search"></input>
+        </view>
+    </view>
+<!--    <view class="flex-row flex-center">-->
+<!--        <scroll-view-->
+<!--                style="width:80%"-->
+<!--                scroll-x-->
+<!--                class="tab-bg nav bg-white"-->
+<!--                scroll-with-animation-->
+<!--                scroll-left="{{scrollLeft}}">-->
+<!--            <view class="cu-item {{index==TabCur?'color-main font32 font-w600 cur':'color3'}}"-->
+<!--                  wx:for="{{tabs}}" wx:key="index" bindtap="tabSelect" data-id="{{index}}" data-item="{{item}}">-->
+<!--                {{item.name}}-->
+<!--            </view>-->
+<!--        </scroll-view>-->
+<!--        <view style="width:20%;" class="font30 font-w600 border-left" bindtap="goToType">-->
+<!--            分类-->
+<!--            <text class="cuIcon-cascades"></text>-->
+<!--        </view>-->
+<!--    </view>-->
+</view>
+
+<!--内容-->
+<!--<view hidden="{{isMain}}" ><home id="main" bind:NavChange="NavChange" bind:onRefresh1="onRefresh1"/></view>-->
+<!--<view hidden="{{isType}}" ><type id="product-list" bind:pageEvent="pageEvent"/></view>-->
+<home-page id="main" bind:pageEvent="pageEvent"/>
+<view class="cu-load loading" wx:if="{{isLoad}}"></view>
+<view class='cu-tabbar-height'></view>
+
+<!--返回顶部-->
+<view class="round float-btn shadow-blur font20 flex-column flex-center"
+      wx:if="{{isShowBack}}"
+      bindtap="goTop">
+    <view class="cuIcon-usefullfill" style="font-size: 26rpx"/>
+    <view >顶部</view>
+</view>
+
+
+<!--对话框-->
+<view class="cu-modal {{invitationDialog ? 'show':''}}">
+    <view class="cu-dialog">
+        <view class="cu-bar bg-white justify-end">
+            <view class="content">是否搜索以下商品</view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class="margin-top flex-column flex-center font30">
+            <text class="line-height">{{searchContent}}</text>
+        </view>
+        <view class="cu-bar bg-white margin-top">
+            <view class="action margin-0 flex-sub  solid-left" bindtap="hideModal" data-iscode="1">取消</view>
+            <view class="action margin-0 flex-sub  solid-left color-main" bindtap="hideModal" data-iscode="0">确定搜索</view>
+        </view>
+    </view>
+</view>

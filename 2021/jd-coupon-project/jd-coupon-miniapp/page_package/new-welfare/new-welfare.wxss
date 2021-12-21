@@ -1,0 +1,14 @@
+/* page_package/new-welfare/new-welfare.wxss */
+page{
+    background-color: #f2f2f2;
+}
+
+.content-body{
+    width: 92%;
+    margin-left: 4%;
+    background-color: white;
+    padding: 12rpx;
+    border-radius: 5rpx;
+    margin-top: 30rpx;
+    line-height: 56rpx;
+}

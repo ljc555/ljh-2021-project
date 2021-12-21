@@ -1,0 +1,4 @@
+/* page_package/money/bill/bill.wxss */
+page{
+    background-color: #f2f2f2;
+}

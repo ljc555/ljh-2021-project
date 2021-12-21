@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "bc-scroll": "/components/refresh/refresh",
+    "product-item": "/components/product-item/product-item"
+  }
+}

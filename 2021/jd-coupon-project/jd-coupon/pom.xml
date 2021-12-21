@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.csbaic</groupId>
+    <artifactId>jd-social-commerce</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>jd-social-commerce</name>
+    <description>social-commerce for jd.com/taobao</description>
+
+    <packaging>pom</packaging>
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+
+    <modules>
+        <module>jd-union-service</module>
+        <module>jd-union-code-generator</module>
+        <!--<module>csbaic-rbac/csbac-rbac-dao</module>-->
+        <!--<module>csbaic-rbac/csbaic-rbac-core</module>-->
+        <!--<module>csbaic-rbac/csbaic-rbac-admin</module>-->
+        <!--<module>csbaic-rbac/csbac-rbac-code-generator</module>-->
+
+
+    </modules>
+
+</project>

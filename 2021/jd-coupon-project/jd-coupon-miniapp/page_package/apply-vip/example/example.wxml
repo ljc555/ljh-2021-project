@@ -1,0 +1,5 @@
+<!--page_package/apply-vip/example/example.wxml-->
+<view wx:for="{{example}}" wx:key="*this">
+    <view class="font31 color3 font-w600 margin">{{item.step}}</view>
+    <image src="{{item.imageUrl}}" mode="widthFix" style="width: 90%;margin-left: 5%;"></image>
+</view>

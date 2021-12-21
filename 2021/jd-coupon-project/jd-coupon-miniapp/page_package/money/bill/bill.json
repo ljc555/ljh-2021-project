@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "结算账单",
+  "usingComponents": {
+    "bc-scroll": "/components/refresh/refresh"
+  }
+}

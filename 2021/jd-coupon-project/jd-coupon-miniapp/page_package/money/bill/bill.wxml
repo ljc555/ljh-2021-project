@@ -1,0 +1,16 @@
+<!--page_package/money/bill/bill.wxml-->
+<!--<custom bgColor="bg-gradual-main" isBack="{{true}}">-->
+<!--    <view slot="backText">返回</view>-->
+<!--    <view slot="content" class="font-w600">结算账单</view>-->
+<!--</custom>-->
+
+<bc-scroll id="type-scroll" class="VerticalMain" requesting="{{requesting}}" empty-show="{{emptyShow}}" end="{{end}}" listCount="0" has-top="{{hasTop}}" enable-back-to-top="{{enableBackToTop}}" refresh-size="{{refreshSize}}" bottom-size="{{bottomSize}}"
+           color="{{color}}" bind:refresh="refresh" bind:more="more" style="height:calc(100vh-40rpx);width:{{windowWidth - 84}}px">
+
+    <view class="flex-column flex-center" style="width: 100%;height: {{windowHeight - CustomBar}}px">
+        <text class="cuIcon-text color8" style="font-size: 128rpx"></text>
+        <view class="margin-top color4">暂无结算账单</view>
+    </view>
+
+</bc-scroll>
+

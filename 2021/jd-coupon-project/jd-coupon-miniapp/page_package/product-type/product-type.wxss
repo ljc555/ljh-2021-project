@@ -1,0 +1,77 @@
+/* page_package/product-type/product-type.wxss */
+
+.VerticalNav.nav {
+  width: 96px;
+  white-space: initial;
+}
+
+.VerticalNav.nav .cu-item {
+  width: 100%;
+  text-align: center;
+  background-color: #f2f2f2;
+  margin: 0;
+  border: none;
+  height: 50px;
+  position: relative;
+}
+
+.VerticalNav.nav .cu-item.cur {
+  background-color: #fff;
+}
+
+.VerticalNav.nav .cu-item.cur::after {
+  content: "";
+  width: 8rpx;
+  height: 30rpx;
+  border-radius: 10rpx 0 0 10rpx;
+  position: absolute;
+  background-color: currentColor;
+  top: 0;
+  right: 0rpx;
+  bottom: 0;
+  margin: auto;
+}
+
+.VerticalBox {
+  display: flex;
+}
+
+.VerticalMain {
+  background-color: #fff;
+}
+
+.ellipsis{
+   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rounded{
+  border-bottom-right-radius: 8rpx;
+  border-bottom-left-radius: 8rpx;
+}
+
+.bg-item{
+   background-color: #f2f2f2;
+   color: #f43f3b;
+   border-radius: 5rpx;
+   border: 1px solid #f43f3b;
+   padding: 3rpx 10rpx;
+}
+
+.comment{
+  position: absolute;
+  right: 10rpx;
+}
+
+.type-item{
+  background-color: #f2f2f2;
+  padding-bottom: 10rpx;
+  border-bottom-right-radius: 8rpx;
+  border-bottom-left-radius: 8rpx;
+}
+
+.img-item{
+  border-top-right-radius: 8rpx;
+  border-top-left-radius: 8rpx;
+}

@@ -1,0 +1,18 @@
+/* pages/launch/launch.wxss */
+.launch{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    display:flex;
+    flex-direction:column;
+}
+.interval{
+    border-radius: 50%;
+    border: 1px solid #0081ff;
+    width: 32px;
+    height: 32px;
+    color: #0081ff;
+    position: absolute;
+    right: 48rpx;
+    top: 148rpx;
+}

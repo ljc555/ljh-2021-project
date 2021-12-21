@@ -1,0 +1,28 @@
+<!--components/study/study.wxml-->
+<!--<view style="width: 100%;background-color: white">-->
+<!--    <view class="skill margin-top-sm margin-left-sm font-w600 color-main">赚钱技巧</view>-->
+<!--    <view class="padding-sm flex-column" style="border-bottom: 1px solid #f2f2f2;" wx:for="{{3}}"-->
+<!--          bindtap="onClick"-->
+<!--          data-item="{{item}}"-->
+<!--          wx:key="*this">-->
+<!--        <view class="color3 font-w600">招商+入门+冲刺官方系统培训课程</view>-->
+<!--        <view class="flex-row margin-top-sm">-->
+<!--            <image src="https://img10.360buyimg.com/N12/s735x363_jfs/t1/24216/14/2036/168900/5c189d14E7100fbf7/371fcad2d783e8ca.jpg"-->
+<!--                   style="border-radius: 8rpx;height: 96px;width: 270rpx;"></image>-->
+<!--            <view class="flex-column margin-left-sm" style="width: calc(100vw - 300rpx)">-->
+<!--                <text class="font26 color6"-->
+<!--                      style="line-height: 34rpx">惠享主力就业计划特别课，集招商、入门、提升的综合进阶培训，主力更多人创收！-->
+<!--                </text>-->
+<!--                <view class="cu-btn bg-gradual-main round font24 flex-row flex-center margin-top-sm"-->
+<!--                      style="width: 84px;height: 24px">去学习-->
+<!--                    <text class="cuIcon-right"/>-->
+<!--                </view>-->
+<!--            </view>-->
+<!--        </view>-->
+<!--    </view>-->
+<!--</view>-->
+
+<view class="column text-center" style="margin-top: 50%">
+    <view class="cuIcon-discoverfill color-main" style="font-size: 84rpx"></view>
+    <view class="color6 font31 margin-top">小编正在整理中</view>
+</view>

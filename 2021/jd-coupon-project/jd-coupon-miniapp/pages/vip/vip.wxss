@@ -1,0 +1,73 @@
+/* pages/vip/vip.wxss */
+@import "../../utils/styles/main.wxss";
+@import "../../utils/styles/icon.wxss";
+@import "../../utils/styles/animation.wxss";
+@import "../../utils/styles/base.wxss";
+
+page{
+    background-color: #f2f2f2;
+}
+.page{
+    background-color: #f2f2f2;
+}
+.reg-style{
+    padding: 4rpx 12rpx;
+    border-radius: 32rpx;
+    border: 1rpx solid #f2f2f2;
+    font-size: 16rpx;
+
+}
+
+.bg-gradual-white1 {
+    color: #333;
+    background-image: white;
+}
+
+.line-height{
+    line-height: 48rpx;
+}
+
+.cody-btn{
+    padding: 6rpx 12rpx;
+    color: #666666;
+    background-color: #ededed;
+    font-size: 20rpx;
+    border-radius: 8rpx;
+}
+
+.more-style{
+    width: 100%;
+    height: 84rpx;
+    align-items: center;
+}
+
+.arrw{
+    position: absolute;
+    right: 30rpx;
+    align-items: center;
+}
+
+.line1{
+    height: 64rpx;
+    width: 1px;
+    background-color: #f2f2f2;
+}
+
+.line2{
+    width: 92%;
+    margin-left: 4%;
+    height: 1rpx;
+    background-color: #f2f2f2;
+}
+
+.num-left{
+    /*width: 49.5%;*/
+    height: 128rpx;
+}
+
+.card-menu1{
+    overflow: hidden;
+    margin-right: 30rpx;
+    margin-left: 30rpx;
+    border-radius: 8rpx;
+}

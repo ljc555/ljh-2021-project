@@ -1,0 +1,35 @@
+/* page_package/money/quota/quota.wxss */
+page{
+    background-color: #f2f2f2;
+}
+
+.cash-item{
+    height: 118rpx;
+    background-color: white;
+    align-items: center;
+}
+
+.cash-item-icon{
+    width: 88rpx;
+    height: 88rpx;
+    margin: 10rpx;
+    border-right: 1rpx solid #f2f2f2;
+}
+.cash-item-money{
+    height: 64rpx;
+}
+
+.cash-btn{
+    width: 80%;
+    margin-left: 10%;
+    height: 84rpx;
+}
+
+.send-btn-def{
+    background-color: #3595f5;
+    color: white;
+}
+.send-btn{
+    background-color: #666666;
+    color: #ededed;
+}

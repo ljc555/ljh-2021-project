@@ -1,0 +1,5 @@
+/* page_package/transfer/transfer/transfer.wxss */
+.page{
+    height: calc(100vh);
+    background-color: #f2f2f2;
+}

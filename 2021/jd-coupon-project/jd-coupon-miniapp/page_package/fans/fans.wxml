@@ -1,0 +1,105 @@
+<!--page_package/fans/fans.wxml-->
+<!--<custom bgColor="bg-gradual-main" isBack="{{true}}">-->
+<!--    <view slot="backText">返回</view>-->
+<!--    <view slot="content" class="font-w600">我的粉丝</view>-->
+<!--</custom>-->
+
+<view style="height:48px;width: 100%;" wx:if="{{tabs.length > 1}}">
+    <view class="cu-bar fixed">
+        <scroll-view scroll-x class="bg-white nav"
+                     style="width:{{windowWidth}}px;">
+            <view class="flex text-center" style="width: {{windowWidth}}px">
+                <view class="cu-item flex-sub {{index==TabCur?'color-main font32 font-w600 cur':'color3'}}"
+                      wx:for="{{tabs}}" wx:key="index" bindtap="tabSelect" data-id="{{index}}" data-item="{{item}}">
+                    {{item.name}}
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+<view  style="background-color: #f2f2f2;">
+
+<!--    <scroll-view scroll-y-->
+<!--                 scrollTop="{{scrollTop}}"-->
+<!--                 bindscrolltolower="more"-->
+<!--                 lower-threshold="128"-->
+<!--                 refresher-enabled="true"-->
+<!--                 bindrefresherrefresh="refresh"-->
+<!--                 refresher-triggered="{{requesting}}"-->
+<!--                 style="height: {{windowHeight - 48}}px">-->
+        <view wx:if="{{fansList.length > 0}}">
+            <view class="cu-list menu-avatar margin-top-xs">
+            <view class="cu-item" wx:for="{{fansList}}" wx:key="*this">
+                <view class="cu-avatar radius lgx"
+                      style="background-image:url({{item.avatarUrl}});"></view>
+                <view class="content margin-left-sm">
+                    <view class="text-pink">
+                        <text class="color3">{{item.nickName}}</text>
+                    </view>
+                    <view class="text-gray text-sm flex">
+                        <text class="text-cut">{{item.phone}}</text>
+                    </view>
+                    <view class="text-gray text-sm flex">
+                        <text class="text-cut">注册时间：{{item.createTime}}</text>
+                    </view>
+                </view>
+                <!--            <view class="action" style="color:#aaaaaa">详情<text class="cuIcon-right"/></view>-->
+            </view>
+        </view>
+            <view class="cu-load loading" wx:if="{{isLoad}}"></view>
+        </view>
+
+
+        <view style="height: {{windowHeight -  CustomBar - 16}}px"
+              wx:else
+              class="flex-column flex-center">
+            <text class="cuIcon-text color8" style="font-size: 128rpx"></text>
+            <view class="margin-top color4">暂无粉丝</view>
+        </view>
+
+<!--    </scroll-view>-->
+
+<!--    <bc-scroll id="type-scroll" requesting="{{requesting}}"-->
+<!--               empty-show="{{emptyShow}}"-->
+<!--               end="{{end}}"-->
+<!--               listCount="0"-->
+<!--               scrollTop="{{scrollTop}}"-->
+<!--               has-top="{{hasTop}}"-->
+<!--               enable-back-to-top="{{enableBackToTop}}"-->
+<!--               refresh-size="{{refreshSize}}"-->
+<!--               bottom-size="{{bottomSize}}"-->
+<!--               color="{{color}}"-->
+<!--               bind:more="more"-->
+<!--               style="height: {{windowHeight - 48}}px"-->
+<!--               bind:refresh="refresh">-->
+
+<!--        <view class="cu-list menu-avatar margin-top-xs"-->
+<!--              wx:if="{{fansList.length > 0}}">-->
+<!--            <view class="cu-item" wx:for="{{fansList}}" wx:key="*this">-->
+<!--                <view class="cu-avatar radius lgx"-->
+<!--                      style="background-image:url({{item.avatarUrl}});"></view>-->
+<!--                <view class="content margin-left-sm">-->
+<!--                    <view class="text-pink">-->
+<!--                        <text class="color3">{{item.nickName}}</text>-->
+<!--                    </view>-->
+<!--                    <view class="text-gray text-sm flex">-->
+<!--                        <text class="text-cut">{{item.phone}}</text>-->
+<!--                    </view>-->
+<!--                    <view class="text-gray text-sm flex">-->
+<!--                        <text class="text-cut">注册时间：{{item.createTime}}</text>-->
+<!--                    </view>-->
+<!--                </view>-->
+<!--                &lt;!&ndash;            <view class="action" style="color:#aaaaaa">详情<text class="cuIcon-right"/></view>&ndash;&gt;-->
+<!--            </view>-->
+<!--        </view>-->
+
+<!--        <view style="height: {{windowHeight -  CustomBar - 16}}px"-->
+<!--              wx:else-->
+<!--              class="flex-column flex-center">-->
+<!--            <text class="cuIcon-text color8" style="font-size: 128rpx"></text>-->
+<!--            <view class="margin-top color4">暂无粉丝</view>-->
+<!--        </view>-->
+
+<!--    </bc-scroll>-->
+
+</view>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csbaic.jd.mapper.QuestionCategoryMapper">
+
+    <resultMap id="Question" type="com.csbaic.jd.dto.Question">
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="answer" column="answer"/>
+
+    </resultMap>
+
+    <resultMap id="groupQuestions" type="com.csbaic.jd.dto.GroupQuestion">
+        <id column="id" property="id" />
+        <result property="category" column="category"/>
+        <result property="icon" column="icon"/>
+        <result property="open" column="open"/>
+        <collection property="questions"  ofType="com.csbaic.jd.dto.Question" columnPrefix="q_" resultMap="Question" />
+    </resultMap>
+
+
+    <select id="getGroupQuestion"   resultMap="groupQuestions">
+      SELECT
+        g.id AS id,
+        g.name AS category,
+        g.icon AS icon,
+        g.open AS open,
+        q.id AS q_id,
+        q.title AS q_title,
+        q.answer AS q_answer
+
+      FROM jd_question_category AS g
+      LEFT JOIN jd_question AS q ON q.cid = g.id
+
+        <where >
+            <if test="cid != null">
+                g.id = #{cid}
+            </if>
+        </where>
+
+    </select>
+</mapper>

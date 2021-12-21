@@ -1,0 +1,81 @@
+<!--page_package/apply-vip/apply-vip.wxml-->
+<!--<custom bgColor="bg-gradual-main" isBack="{{true}}">-->
+<!--    <view slot="backText">返回</view>-->
+<!--    <view slot="content" class="font-w600">建群升级</view>-->
+<!--</custom>-->
+
+
+<view class="flex-column apply-body">
+    <view class="apply-title margin-top-xl">升级进展：{{members.statusDesc}}</view>
+
+    <view class="margin-top-xl color3">为您分配微信群编号：{{members.groupId}}</view>
+
+    <view class="margin-top-sm color3">您需要做如下操作完成升级</view>
+
+    <text class="margin-top-sm color3 flex-row"
+          bindtap="onCopy" data-code="{{members.groupName}}"
+          style="line-height: 44rpx">1.新拉或已有一个超过{{members.memberCount}}人的微信推广群，群名称修改为“{{members.groupName}}”
+        <text class="text-blue">复制群名称</text>
+    </text>
+
+    <text wx:if="{{members.wechatId}}"
+          bindtap="onCopy" data-code="{{members.wechatId}}"
+          class="color3 flex-row" style="line-height: 44rpx">也可添加导师微信咨询，导师微信号：{{members.wechatId}}
+        <text class="text-blue">复制微信号</text>
+    </text>
+
+    <text class="margin-top-sm color3" style="line-height: 44rpx"
+          bindtap="onExample">2.上传两张截图（截图一：显示出群主和群人数 截图二：显示出群名称）
+        <text class="text-blue">查看示例</text>
+    </text>
+
+    <text class="margin-top-sm color3" style="line-height: 44rpx">3.上传提交后，工作时间30分钟内会有审核结果，审核通过会有短信通知或订阅消息。</text>
+</view>
+
+<view class="cu-bar bg-white margin-top">
+    <view class="action">
+        图片上传
+    </view>
+    <view class="action">
+        {{imgList.length}}/2
+    </view>
+</view>
+<view class="cu-form-group">
+    <view class="grid col-4 grid-square flex-sub">
+        <view class="bg-img" wx:for="{{imgList}}" wx:key="*this" bindtap="ViewImage" data-url="{{imgList[index]}}">
+            <image src='{{imgList[index]}}' mode='aspectFill' bindtap="previewImg" data-index></image>
+            <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+                <text class="cuIcon-close"></text>
+            </view>
+        </view>
+        <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<2}}">
+            <text class="cuIcon-cameraadd"></text>
+        </view>
+    </view>
+</view>
+
+<view class="cu-btn bg-green font31 margin-top"
+      bindtap="onSubmit"
+      style="height: 84rpx;width: 80%;margin-left: 10%;border-radius: 12rpx;">提交审核
+</view>
+
+
+<view class="cu-modal {{invitationDialog ? 'show':''}}">
+    <view class="cu-dialog">
+        <view class="cu-bar bg-white justify-end">
+            <view class="content">提示</view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class="padding-xl bg-gradual-white1  flex-column flex-center font30">
+            <text class="line-height">提交成功啦！,请等待1~3个工作日</text>
+            <text class="line-height">你可以订阅消息，第一时间获取审核进度</text>
+        </view>
+        <view class="cu-bar bg-white ">
+            <view class="action margin-0 flex-sub  solid-left" bindtap="hideModal" data-iscode="1">取消</view>
+            <view class="action margin-0 flex-sub  solid-left color-main" bindtap="hideModal" data-iscode="x">订阅消息
+            </view>
+        </view>
+    </view>
+</view>

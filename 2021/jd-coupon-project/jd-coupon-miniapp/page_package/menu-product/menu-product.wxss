@@ -1,0 +1,6 @@
+/* page_package/menu-product/menu-product.wxss */
+
+.bg-gradual-white1{
+    background-color: white;
+    color: #333;
+}

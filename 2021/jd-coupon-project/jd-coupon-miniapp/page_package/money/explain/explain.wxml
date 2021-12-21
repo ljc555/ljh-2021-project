@@ -1,0 +1,19 @@
+<!--page_package/money/explain/explain.wxml-->
+<!--<custom bgColor="bg-gradual-main" isBack="{{true}}">-->
+<!--    <view slot="backText">返回</view>-->
+<!--    <view slot="content" class="font-w600">提现说明</view>-->
+<!--</custom>-->
+
+<view style="width: 92%;margin-left: 4%">
+    <view class="flex-column">
+        <view class="color-black font30 font-w600 margin-top">一、结算提示</view>
+        <text class="color4 line-height40 margin-top-sm">{{prompt}}</text>
+    </view>
+
+    <view class="flex-column">
+        <view class="color-black font30 font-w600 margin-top">二、名词解释</view>
+        <text class="color4 line-height40 margin-top-sm">{{noun}}</text>
+    </view>
+
+    <view style="height: 48rpx"></view>
+</view>

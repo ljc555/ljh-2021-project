@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 6ex23trrS9
+    url: jdbc:mysql://193.112.22.138:3306/jd_union?serverTimezone=Asia/Shanghai&characterEncoding=UTF-8
+
+application:
+  api-host: localhost:8080
+#  web-app:
+#    redirect-uri: https://localhost:8080/login/wechat/oauth2/callback
+
+
+logging:
+  level:
+    root: error
+    com.csbaic.jd: debug
+    com.csbaic.jd.mapper: debug
+
+
+ 

@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "攻略",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#ffffff",
+  "usingComponents": {
+    "new-item": "/components/new-item/new-item",
+    "study-item": "/components/study/study",
+    "question-item": "/components/question/question",
+    "poster-item": "/components/poster/poster"
+  }
+}

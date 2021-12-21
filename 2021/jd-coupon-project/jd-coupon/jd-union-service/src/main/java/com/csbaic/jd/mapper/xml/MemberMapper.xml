@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csbaic.jd.mapper.MemberMapper">
+
+    <sql id="simpleMemberUserInfo">
+        u.id AS user_id,
+        u.nick_name as nick_name,
+        u.avatar_url AS avatar_url,
+        u.identify AS identify,
+        u.invitation_code AS invitation_code,
+        u.phone AS phone,
+        u.create_time AS create_time,
+        w.wechat_id AS wechat_id
+    </sql>
+
+    <select id="getMembersOfUserIdAndIdentify" resultType="com.csbaic.jd.dto.SimpleMemberUserInfo">
+        SELECT
+            <include refid="simpleMemberUserInfo"></include>
+        FROM jd_team_member AS t
+        RIGHT JOIN jd_user AS u ON u.id = t.member_id
+        LEFT JOIN jd_wechat_user AS w ON w.user_id = u.id
+        WHERE t.leader_id = #{userId} AND t.member_id != #{userId}
+
+        <if test="identify != null">
+                AND u.identify = #{identify}
+         </if>
+    </select>
+    <select id="getMembersInfoOfUserIdAndNotIn" resultType="com.csbaic.jd.dto.SimpleMemberUserInfo" >
+        SELECT
+         <include refid="simpleMemberUserInfo"></include>
+        FROM jd_team_member AS t
+        RIGHT JOIN jd_user AS u ON u.id = t.member_id
+        LEFT JOIN jd_wechat_user AS w ON w.user_id = u.id
+        WHERE t.leader_id = #{userId}
+        AND w.wechat_id != ''
+        AND t.member_id
+        NOT IN
+
+        <foreach collection="excluded" item="id" index="index" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+
+
+    </select>
+    <select id="getMemberInfoOfUserId" resultType="com.csbaic.jd.dto.SimpleMemberUserInfo">
+        SELECT
+            <include refid="simpleMemberUserInfo"></include>
+        FROM jd_user AS u
+        LEFT JOIN jd_wechat_user AS w ON w.user_id = u.id
+        WHERE u.id = #{userId}
+    </select>
+</mapper>

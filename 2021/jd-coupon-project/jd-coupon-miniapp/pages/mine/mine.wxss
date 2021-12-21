@@ -1,0 +1,29 @@
+/* pages/mine/mine.wxss */
+@import "../../utils/styles/main.wxss";
+@import "../../utils/styles/icon.wxss";
+@import "../../utils/styles/animation.wxss";
+@import "../../utils/styles/base.wxss";
+
+.share-img{
+  width: 86%;
+  height: 218rpx;
+  border-radius: 12rpx;
+  margin-left: 7%;
+}
+
+.line-g{
+  width: 100%;
+  height: 30rpx;
+  background: #f2f2f2;
+  margin-top: 40rpx;
+}
+
+.setting-btn{
+  position: absolute;
+  right: 30rpx;
+  margin-top: 20rpx
+}
+
+.button::after {
+  border: none;
+}

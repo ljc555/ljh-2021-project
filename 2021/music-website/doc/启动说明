@@ -1,0 +1,28 @@
+一、代码地址
+    https://github.com/Yin-Hongwei/music-website
+
+二、测试图片和数据
+    百度网盘上/soft/music-server代码数据
+
+三、工程说明
+    muxic-client 客户端
+    music-manage 服务端管理控制台
+    music-server 服务端服务
+
+四、启动工程
+    启动music-server下的YinMusicApplication.java
+    前端运行：
+        npm install
+        npm run dev
+
+    启动客户端：进入 music-client 目录，运行下面命令
+        npm install // 安装依赖
+        npm run dev // 启动前台项目
+
+    启动管理端：进入 music-manage 目录，运行下面命令
+        npm install // 安装依赖
+        npm run dev // 启动后台管理项目
+
+五、访问地址
+    前台：http://localhost:8082/
+    后台：http://localhost:8080/

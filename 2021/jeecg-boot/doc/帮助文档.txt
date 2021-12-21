@@ -1,0 +1,15 @@
+git代码地址：
+https://github.com/jeecgboot/jeecg-boot
+
+安装文档：
+http://doc.jeecg.com/2043869
+http://doc.jeecg.com/2242817
+
+演示地址：
+http://boot.jeecg.com
+
+工程说明：
+ant-design-vue-jeecg:为后端管理界面
+jeecg-boot-parent:为后端代码
+jeecg-uniapp:为app界面，使用xbuild启动
+jimuReport:一款报表工程

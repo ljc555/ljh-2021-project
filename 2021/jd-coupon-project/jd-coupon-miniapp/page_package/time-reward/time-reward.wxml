@@ -1,0 +1,5 @@
+<!--page_package/time-reward/time-reward.wxml-->
+<!--<custom bgColor="bg-gradual-main" isBack="{{true}}">-->
+<!--    <view slot="backText">返回</view>-->
+<!--    <view slot="content" class="font-w600">限时奖励</view>-->
+<!--</custom>-->

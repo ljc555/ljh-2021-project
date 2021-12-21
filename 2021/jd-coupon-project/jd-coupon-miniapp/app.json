@@ -1,0 +1,118 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/daren/daren",
+    "pages/vip/vip",
+    "pages/strategy/strategy",
+    "pages/mine/mine",
+    "pages/launch/launch",
+    "pages/sort/sort",
+    "pages/product/product",
+    "pages/login/login",
+    "pages/login/phone-login/phone-login"
+  ],
+  "subpackages": [
+    {
+      "root": "page_package",
+      "name": "features",
+      "pages": [
+        "details/index",
+        "search/search",
+        "product-type/product-type",
+        "video-play/video-play",
+        "about/about",
+        "menu-product/menu-product",
+        "time-reward/time-reward",
+        "new-welfare/new-welfare",
+        "activity/activity",
+        "money/cash/cash",
+        "money/quota/quota",
+        "money/history/history",
+        "money/bill/bill",
+        "money/explain/explain",
+        "fans/fans",
+        "equity/equity",
+        "apply-vip/apply-vip",
+        "profit/profit",
+        "order/order",
+        "video-course/video-course",
+        "study/study",
+        "question/question",
+        "contacts/contacts",
+        "feedback/feedback",
+        "apply-vip/example/example",
+        "poster/poster",
+        "news-details/news-details",
+        "transfer/transfer/transfer",
+        "transfer/chain/chain"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/launch/launch": {
+      "network": "all",
+      "packages": [
+        "page_package"
+      ]
+    }
+  },
+  "window": {
+    "navigationBarBackgroundColor": "#F1444C",
+    "navigationBarTitleText": "尚橙优选",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#7A7E83",
+    "selectedColor": "#f43f3b",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/ic_tab_home.png",
+        "selectedIconPath": "images/ic_tab_home_cur.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/sort/sort",
+        "iconPath": "images/ic_tab_daren.png",
+        "selectedIconPath": "images/ic_tab_daren_cur.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/vip/vip",
+        "iconPath": "images/ic_tab_vip.png",
+        "selectedIconPath": "images/ic_tab_vip_cur.png",
+        "text": "会员"
+      },
+      {
+        "pagePath": "pages/strategy/strategy",
+        "iconPath": "images/ic_tab_strategy.png",
+        "selectedIconPath": "images/ic_tab_strategy_cur.png",
+        "text": "攻略"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "images/ic_tab_mine.png",
+        "selectedIconPath": "images/ic_tab_mine_cur.png",
+        "text": "我的"
+      }
+    ],
+    "usingComponents": {}
+  },
+  "usingComponents": {
+    "custom": "/components/custom/index",
+    "prompt": "/components/prompt-dialig/index"
+  },
+  "networkTimeout": {
+    "request": 30000,
+    "connectSocket": 20000,
+    "uploadFile": 60000,
+    "downloadFile": 60000
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx91d27dbf599dff74"
+  ],
+  "sitemapLocation": "sitemap.json"
+}

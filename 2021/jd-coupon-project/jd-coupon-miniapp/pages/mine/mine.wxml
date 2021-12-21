@@ -1,0 +1,49 @@
+<!--pages/mine/mine.wxml-->
+<!--<custom bgColor="bg-gradual-white" isBack="{{false}}">-->
+<!--  <view slot="content" class="font-w600 font34">我的</view>-->
+<!--</custom>-->
+
+<view class="flex-row margin-top margin-left-sm" style="align-items: center">
+    <image class="cu-avatar xl round margin-left" src="{{userInfo.avatarUrl}}"></image>
+    <view class="flex-column margin-left-sm">
+        <view class="flex-row" style="align-items: flex-end;">
+            <view class="font30 color3 font-w600">{{userInfo.nickName}}</view>
+            <view class="font22 color-main margin-left-xs">微信登录</view>
+            <view class="cu-btn round bg-gradual-white setting-btn">
+                <!--        <view class="cuIcon-settingsfill color3" style="font-size:48rpx"></view>-->
+            </view>
+        </view>
+        <view class="font26 color6 margin-top-sm">{{userInfo.phone}}</view>
+        <view class="font26 color6 margin-top-sm">注册时间：{{mineInfo.createTime}}</view>
+    </view>
+</view>
+
+<image class="share-img margin-top-lg"
+       bindtap="onShare"
+       src="../../images/ic_share_btn.jpg"></image>
+
+<view class="line-g"></view>
+
+<view class="cu-list menu sm-border}}">
+
+    <view class="cu-item arrow"
+          wx:for="{{menuList}}"
+          wx:key="*this"
+          bindtap="onClick"
+          data-item="{{item}}">
+        <view class="content">
+            <button wx:if="{{index != 2}}"
+                    class="button font26" style="text-align: start;justify-content: start;background-color: white;">
+                <text class="cuIcon-{{item.icon}} color-main font-w600" style="font-size: 34rpx"></text>
+                <text class="color3 margin-left-sm">{{item.title}}</text>
+            </button>
+            <button wx:else
+                    open-type="contact"
+                    class="button font30" style="text-align: start;justify-content: start;background-color: white;">
+                <text class="cuIcon-{{item.icon}} color-main font-w600" style="font-size: 34rpx"></text>
+                <text class="color3 margin-left-sm">{{item.title}}</text>
+            </button>
+        </view>
+    </view>
+
+</view>

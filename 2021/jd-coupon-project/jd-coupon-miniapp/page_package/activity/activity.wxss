@@ -1,0 +1,11 @@
+/* page_package/activity/activity.wxss */
+page{
+    background-color: #eeeeee;
+}
+
+.bottom-bar{
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    width: 100%;
+}

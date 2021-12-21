@@ -1,0 +1,13 @@
+<!--page_package/question/question.wxml-->
+<!--<custom bgColor="bg-gradual-main" isBack="{{true}}">-->
+<!--    <view slot="backText">返回</view>-->
+<!--    <view slot="content" class="font-w600">问题解答</view>-->
+<!--</custom>-->
+
+<view class="padding-sm flex-column bg-gradual-white1">
+    <view class="flex-row" style="align-items: center">
+        <view style="height: 28rpx;width: 6rpx;background-color: #f43f3b"></view>
+        <view class="color-main margin-left-xs font-w600">{{question.title}}</view>
+    </view>
+    <text style="line-height: 44rpx" class="color6 margin-top-sm">{{question.answer}}</text>
+</view>

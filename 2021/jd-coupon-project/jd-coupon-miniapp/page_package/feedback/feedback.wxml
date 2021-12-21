@@ -1,0 +1,14 @@
+<!--page_package/feedback/feedback.wxml-->
+<view class="page">
+    <view style="width: 90%;margin-left: 5%" class="padding-top">问题或建议</view>
+    <view class="cu-card case">
+        <textarea maxlength="300"
+                  class="cu-item shadow padding-sm"
+                  style="width: 90%;margin-left: 5%"
+                  bindinput="textareaBInput"
+                  placeholder="多行文本输入框"></textarea>
+    </view>
+    <view class="cu-btn background-main margin-top round "
+          bindtap="onSubmit"
+          style="width: 80%;margin-left: 10%;background-color: #f43f3b;color: white;height: 64rpx">提 交</view>
+</view>

@@ -1,0 +1,218 @@
+<!--pages/vip/vip.wxml-->
+<!--<custom bgColor="bg-gradual-main" isBack="{{false}}">-->
+<!--    <view slot="content" class="font-w600 font34">会员</view>-->
+<!--</custom>-->
+<!--<bc-scroll id="type-scroll"-->
+<!--           class="VerticalMain" requesting="{{requesting}}" empty-show="{{emptyShow}}" end="{{end}}" listCount="0" has-top="{{hasTop}}" enable-back-to-top="{{enableBackToTop}}" refresh-size="{{refreshSize}}" bottom-size="{{bottomSize}}"-->
+<!--           color="{{color}}" bind:refresh="refresh" bind:more="more" style="height:calc(100vh-40rpx);width:{{windowWidth - 84}}px">-->
+
+<scroll-view scroll-y
+             refresher-background="#f2f2f2"
+             refresher-enabled="true"
+             bindrefresherrefresh="refresh"
+             refresher-triggered="{{requesting}}"
+             style="background-color: #f2f2f2;height:{{windowHeight-50}}px;">
+
+    <view class="page">
+        <view class="bg-gradual-main color-white padding-top-xs">
+            <view class="flex-row margin-left-sm gradual" style="align-items: center">
+                <image class="cu-avatar xl round" src="{{userInfo.avatarUrl}}"></image>
+                <view class="flex-column margin-left-sm">
+                    <view class="flex-row" style="align-items: flex-end;">
+                        <view class="font30 color-white font-w600">{{userInfo.nickName}}</view>
+                        <view class="colorf2 margin-left-xs reg-style">{{vipInfo.userInfo.identifyDesc}}
+                        </view>
+                    </view>
+                    <view class="font26 color-white margin-top-sm flex-row" style="align-items: center">
+                        <view wx:if="{{isShowCode}}">邀请码：{{vipInfo.userInfo.invitationCode}}</view>
+                        <view wx:else>邀请码：******</view>
+                        <!--                    cuIcon-attentionfarbidfill-->
+                        <view class="cuIcon-{{isShowCode ? 'attentionfill':'attentionforbidfill'}} margin-left-sm"
+                              bindtap="isShowData1" data-index="0"></view>
+                        <view class="cody-btn margin-left-sm" bindtap="onCopy" data-index="0">复制</view>
+                        <view class="cu-btn round page shadow-blur color-main margin-left-sm"
+                              wx:if="{{vipInfo.teacherInfo.wechatId}}"
+                              style="height:40rpx;  font-size: 20rpx;" bindtap="onShowDialog">
+                            微信专属导师
+                            <view class="cuIcon-right margin-left-sm"/>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view style="height: 100rpx;">
+
+            </view>
+        </view>
+
+        <view class="cu-list menu card-menu1 margin-top" style="margin-top: -66rpx">
+            <view class="cu-item arrow" bindtap="onCash">
+                <view class="content">
+                    <text class="text-grey color3 font-w600">收益提现</text>
+                </view>
+                <view class="action">
+                    <view class="cu-tag round bg-grey light">提现</view>
+                </view>
+            </view>
+        </view>
+
+
+        <view style="background-color: white" class="margin-top"
+              wx:for="{{vipInfo.blocks}}" wx:key="*this">
+            <view class="more-style flex-row">
+                <view class="color3 font-w600 margin-left">{{item.title}}</view>
+                <view class="cuIcon-{{item.isCheck ? 'attentionforbidfill':'attentionfill'}} margin-left-sm"
+                      wx:if="{{item.hideable}}"
+                      bindtap="isShowData" data-index="{{index}}" data-item="{{item}}"></view>
+                <view class="font26 color6 flex-row arrw" bindtap="onFans"
+                      wx:if="{{item.more}}"
+                      data-item="{{item}}">
+                    <view>更多</view>
+                    <view class="cuIcon-right margin-left-xs"></view>
+                </view>
+            </view>
+            <view class="line2"></view>
+            <!--            no-border-->
+            <view class="cu-list grid col-{{item.items.length}} ">
+                <view class="cu-item" wx:for="{{item.items}}" wx:key="*this" wx:for-item="items">
+                    <view class="flex-column num-left flex-center">
+                        <view class="color-main font-w600" wx:if="{{!item.isCheck}}">{{items.value}}</view>
+                        <view class="color-main font-w600" wx:else>****</view>
+                        <view class="margin-top-xs font22">{{items.key}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="bg-gradual-main flex-row shadow-blur"
+                  bindtap="onEquity"
+                  wx:if="{{item.title == '我的团队' && !isIdentify}}"
+                  style="height: 108rpx;align-items: center;width: 90%;margin-left: 5%;border-top-right-radius: 20rpx;border-top-left-radius:20rpx">
+                <view class="flex-column">
+                    <view class="color-white font28 margin-left-sm font-w600">升级黄金会员，马上解锁九大权益</view>
+                    <view class="color-white font24 margin-top-xs margin-left-sm">黄金会员，省更多、转更多</view>
+                </view>
+                <view class="cu-btn round page shadow-blur color-main"
+                      style="position: absolute;right: 7%;font-size: 20rpx;height: 40rpx;">点击查看
+                </view>
+            </view>
+            <!--            <view class="flex-row flex-center">-->
+            <!--                <view class="flex-column num-left flex-center">-->
+            <!--                    <view class="color-main font-w600" wx:if="{{isShowFens}}">{{vipInfo.fans.countForToday}}人</view>-->
+            <!--                    <view class="color-main font-w600" wx:else>****</view>-->
+            <!--                    <view class="margin-top-xs">今日新增</view>-->
+            <!--                </view>-->
+            <!--                <view class="line1"></view>-->
+            <!--                <view class="flex-column num-left flex-center">-->
+            <!--                    <view class="color-main font-w600" wx:if="{{isShowFens}}">{{vipInfo.fans.totalCount}}人</view>-->
+            <!--                    <view class="color-main font-w600" wx:else>****</view>-->
+            <!--                    <view class="margin-top-xs">全部成员</view>-->
+            <!--                </view>-->
+            <!--            </view>-->
+            <!--            <view class="bg-gradual-main flex-row shadow-blur"-->
+            <!--                  bindtap="onEquity"-->
+            <!--                  style="height: 108rpx;align-items: center;width: 90%;margin-left: 5%;border-top-right-radius: 20rpx;border-top-left-radius:20rpx">-->
+            <!--                <view class="flex-column">-->
+            <!--                    <view class="color-white font28 margin-left-sm font-w600">升级黄金会员，马上解锁九大权益</view>-->
+            <!--                    <view class="color-white font24 margin-top-xs margin-left-sm">黄金会员，省更多、转更多</view>-->
+            <!--                </view>-->
+            <!--                <view class="cu-btn round page shadow-blur color-main"-->
+            <!--                      style="position: absolute;right: 7%;font-size: 20rpx;height: 40rpx;">点击查看</view>-->
+            <!--            </view>-->
+        </view>
+
+        <!--        <view style="background-color: white" class="margin-top">-->
+
+        <!--            <view class="more-style flex-row">-->
+        <!--                <view class="color3 font-w600 margin-left">预估收益</view>-->
+        <!--                <view class="cuIcon-{{isShowIncome ? 'attentionfill':'attentionforbidfill'}} margin-left-sm"-->
+        <!--                      bindtap="isShowData" data-index="2"></view>-->
+        <!--                <view class="font26 color6 flex-row arrw" bindtap="onProfit">-->
+        <!--                    <view>更多 </view>-->
+        <!--                    <view class="cuIcon-right margin-left-xs"></view>-->
+        <!--                </view>-->
+        <!--            </view>-->
+        <!--            <view class="line2"></view>-->
+        <!--            <view class="flex-row flex-center">-->
+        <!--                <view class="flex-column num-left flex-center">-->
+        <!--                    <view class="color-main font-w600" wx:if="{{isShowIncome}}">{{vipInfo.memberEstimateFeeInfo.awardFeeForToday}}</view>-->
+        <!--                    <view class="color-main font-w600" wx:else>****</view>-->
+        <!--                    <view class="margin-top-xs">今日返利收益</view>-->
+        <!--                </view>-->
+        <!--                <view class="line1"></view>-->
+        <!--                <view class="flex-column num-left flex-center">-->
+        <!--                    <view class="color-main font-w600" wx:if="{{isShowIncome}}">{{vipInfo.memberEstimateFeeInfo.awardFeeForYesterday}}</view>-->
+        <!--                    <view class="color-main font-w600" wx:else>****</view>-->
+        <!--                    <view class="margin-top-xs">昨日返利收益</view>-->
+        <!--                </view>-->
+        <!--            </view>-->
+        <!--        </view>-->
+
+        <!--        <view style="background-color: white" class="margin-top">-->
+
+        <!--            <view class="more-style flex-row">-->
+        <!--                <view class="color3 font-w600 margin-left">我的订单</view>-->
+        <!--                <view class="cuIcon-{{isShowOrder ? 'attentionfill':'attentionforbidfill'}} margin-left-sm"-->
+        <!--                      bindtap="isShowData" data-index="3"></view>-->
+        <!--                <view class="font26 color6 flex-row arrw" bindtap="onOrder">-->
+        <!--                    <view>更多 </view>-->
+        <!--                    <view class="cuIcon-right margin-left-xs"></view>-->
+        <!--                </view>-->
+        <!--            </view>-->
+        <!--            <view class="line2"></view>-->
+        <!--            <view class="flex-row flex-center">-->
+        <!--                <view class="flex-column num-left flex-center">-->
+        <!--                    <view class="color-main font-w600" wx:if="{{isShowOrder}}">{{vipInfo.memberOrderInfo.countForToday}}</view>-->
+        <!--                    <view class="color-main font-w600" wx:else>****</view>-->
+        <!--                    <view class="margin-top-xs">今天购买订单</view>-->
+        <!--                </view>-->
+        <!--                <view class="line1"></view>-->
+        <!--                <view class="flex-column num-left flex-center">-->
+        <!--                    <view class="color-main font-w600" wx:if="{{isShowOrder}}">{{vipInfo.memberOrderInfo.countForYesterday}}</view>-->
+        <!--                    <view class="color-main font-w600" wx:else>****</view>-->
+        <!--                    <view class="margin-top-xs">昨日购买订单</view>-->
+        <!--                </view>-->
+        <!--            </view>-->
+        <!--        </view>-->
+        <view class="margin color8 font26 flex-row flex-center">—————— 到底啦 ——————</view>
+    </view>
+
+
+</scroll-view>
+
+<!--</bc-scroll>-->
+
+<view class="cu-modal {{invitationDialog ? 'show':''}}">
+    <view class="cu-dialog">
+        <view class="cu-bar bg-white justify-end">
+            <view class="content">提示</view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class="padding-xl bg-gradual-white1 flex-column flex-center font30">
+            <text class="line-height">您的专属导师微信号：{{vipInfo.teacherInfo.wechatId}}</text>
+            <text class="line-height">关于省钱赚钱的问题，请复制微\n信号去微信添加好友咨询吧~</text>
+            <text class="line-height">添加时请备注：尚橙成员</text>
+        </view>
+        <view class="cu-bar bg-white">
+            <view class="action margin-0 flex-sub  solid-left" bindtap="hideModal" data-iscode="1">取消</view>
+            <view class="action margin-0 flex-sub  solid-left color-main" bindtap="hideModal" data-iscode="0">复制微信
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="flex-row font-center"
+      wx:if="{{!isShow}}"
+      style="height: 72rpx;position: fixed;width: 100%;bottom: 100rpx;background-color: #FEF2F0">
+    <view class="flex-row flex-center" style="width: {{windowWidth*0.1}}px;background-color: #FEF2F0">
+        <view class="cuIcon-roundclose color8" style="font-size: 46rpx"
+            bindtap="onClose"></view>
+    </view>
+    <view class="" style="width: {{windowWidth*0.7}}px;">
+        <view class="color-main"
+              style="white-space: nowrap;width: {{windowWidth*0.7}}px">{{promptMsg}}</view>
+    </view>
+    <view class="flex-row flex-center" style="width: {{windowWidth*0.2}}px;background-color: #FEF2F0">
+        <view class="cu-btn round color-main font24 text-center" style="border:  1px solid #f43f3b;background-color:#FEF2F0;height: 44rpx;"
+        bindtap="onInputCode">去填写</view>
+    </view>
+</view>

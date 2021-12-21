@@ -1,0 +1,37 @@
+<!--components/order-item/order-item.wxml-->
+<view class="flex-column padding-sm bg-white margin-top-sm colo6 font26" style="width: 100%">
+    <view class="flex-row">
+        <view>订单编号：{{orderItem.orderId}}</view>
+        <view class="absolute-right">PLUS会员：{{orderItem.plus ? '是':'否'}}</view>
+    </view>
+    <view class="margin-top-xs">下单时间：{{orderItem.orderTime}}</view>
+    <view class="flex-row margin-top-xs">
+        <view>状态：{{orderItem.validCodeDesc}}</view>
+        <view class="absolute-right" wx:if="{{type == 1}}">预估返利收益：<text class="text-price color-main">{{orderItem.estimateRebateFee}}</text></view>
+        <view class="absolute-right" wx:else>预估推广收益：<text class="text-price color-main">{{orderItem.estimateCommissionFee}}</text></view>
+    </view>
+    <view class="flex-row margin-top-xs" wx:for="{{orderItem.skuInfo}}" wx:key="*this"
+        bindtap="onItem" data-item="{{item}}">
+        <image style="width: {{windowWidth*0.3}}px;height: {{windowWidth*0.28}}px;background-color: #f2f2f2" src="{{item.skuImage}}"/>
+        <view class="flex-column margin-left-sm" style="width: {{windowWidth*0.68}}px;">
+           <view class="flex-row">
+               <view class="tag-product">同店</view>
+               <view class="title-style font26 color-black ellipsis" style="width:{{windowWidth * 0.65}}px">
+                   {{item.skuName}}
+               </view>
+           </view>
+            <view class="flex-row margin-top-xs">
+                <view>状态：{{item.validCodeDesc}}</view>
+                <view class="absolute-right">编号：{{item.orderId}}</view>
+            </view>
+            <view class="margin-top-xs">数量：{{item.skuNum}}</view>
+            <view class="flex-row margin-top-xs">
+                <view>计佣金额：<text class="text-price color-main">{{item.estimateCosPrice}}</text></view>
+                <view class="absolute-right" wx:if="{{type == 1}}">预估返利收益：<text class="text-price color-main">{{item.estimateRebateFee}}</text></view>
+                <view class="absolute-right" wx:else>预估推广收益：<text class="text-price color-main">{{item.estimateCommissionFee}}</text></view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<prompt promptMsg="{{msg}}" invitationDialog="{{isShowDialog}}" confirmText="确定"/>

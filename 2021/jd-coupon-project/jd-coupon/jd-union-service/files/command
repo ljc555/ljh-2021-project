@@ -1,0 +1,1 @@
+ scp ~/Desktop/jd-coupon-backend/jd-union-com.csbaic.rbac.dao.service/target/jd-union-com.csbaic.rbac.dao.service-0.0.1-SNAPSHOT.jar  root@www.csbaic.com:/root/jd-union-com.csbaic.rbac.dao.service-0.0.1-SNAPSHOT.jar

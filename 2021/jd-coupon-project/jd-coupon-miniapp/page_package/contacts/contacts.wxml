@@ -1,0 +1,91 @@
+<!--page_package/contacts/contacts.wxml-->
+<!--<scroll-view scroll-y-->
+<!--             bindscrolltolower="more"-->
+<!--             lower-threshold="128"-->
+<!--             refresher-enabled="true"-->
+<!--             bindrefresherrefresh="refresh"-->
+<!--             refresher-triggered="{{requesting}}">-->
+    <view class="bg-white padding-sm">
+        <view class="color-black font30 margin-left-sm font-w600">我的<text class="color6 margin-left-sm font24" style="font-weight: 200" wx:if="{{!weChatCode}}">赶快填写微信号吧~方便导师添加你进行指导</text>
+        </view>
+        <view class="flex-row font-center margin-top-xs" style="border-top: 1px solid #f2f2f2">
+            <image class="round cu-avatar lg margin-left-sm margin-top-xs" src="{{infoData.mine.avatarUrl}}"/>
+            <view class="flex-column margin-left-sm">
+                <view class="flex-row font-center">
+                    <view class="font28 color3">{{infoData.mine.nickName}}</view>
+                    <view class="rank margin-left-xs font20">{{infoData.mine.identifyDesc}}</view>
+                </view>
+                <input placeholder="请输入你的微信号"
+                       class="margin-top-xs"
+                       focus="isEditWeChat"
+                       bindinput="bindInput"
+                       value="{{weChatCode}}"
+                        wx:if="{{isEditWeChat}}"/>
+                <view wx:else
+                      bindtap="onEdit"
+                      class="margin-top-xs color6 font24">{{weChatCode?weChatCode:'点此填写微信号'}}<text class="cuIcon-edit margin-left-xs" style="color: #333333;font-size: 30rpx"/></view>
+            </view>
+            <view class="absolute-right action-btn1 color-main font24"
+                  bindtap="onSave"
+                  wx:if="{{isEditWeChat}}">保 存</view>
+        </view>
+    </view>
+
+    <view class="bg-white padding-sm margin-top-sm">
+        <view class="color-black font30 margin-left-sm font-w600">邀请人</view>
+        <view class="flex-row font-center margin-top-xs" style="border-top: 1px solid #f2f2f2">
+            <image class="round cu-avatar lg margin-left-sm margin-top-xs" src="{{infoData.inviter.avatarUrl}}"/>
+            <view class="flex-column margin-left-sm">
+                <view class="flex-row font-center">
+                    <view class="font28 color3">{{infoData.inviter.nickName}}</view>
+                    <view class="margin-left-xs font20 cuIcon-crownfill {{infoData.inviter.identify > 1 ? 'color-main':'color8'}}"/>
+                </view>
+                <view class="margin-top-xs color6 font24">微信号：{{infoData.inviter.wechatId}}</view>
+            </view>
+            <view class="absolute-right action-btn1 color-main font24"
+                  data-code="{{infoData.inviter.wechatId}}"
+                  bindtap="onCopy">复制微信</view>
+        </view>
+    </view>
+    <view class="bg-white padding-sm margin-top-sm">
+        <view class="color-black font30 margin-left-sm font-w600">导师</view>
+        <view class="flex-row font-center margin-top-xs" style="border-top: 1px solid #f2f2f2">
+            <image class="round cu-avatar lg margin-left-sm margin-top-xs" src="{{infoData.teacher.avatarUrl}}"/>
+            <view class="flex-column margin-left-sm">
+                <view class="flex-row font-center">
+                    <view class="font28 color3">{{infoData.teacher.nickName}}</view>
+                    <view class="margin-left-xs font20 cuIcon-crownfill {{infoData.teacher.identify > 1 ? 'color-main':'color8'}}"/>
+                </view>
+                <view class="margin-top-xs color6 font24">微信号：{{infoData.teacher.wechatId}}</view>
+            </view>
+            <view class="absolute-right action-btn1 color-main font24"
+                  data-code="{{infoData.teacher.wechatId}}"
+                  bindtap="onCopy">复制微信</view>
+        </view>
+    </view>
+
+    <view class="bg-white padding-sm margin-top-sm">
+<!--        -->
+        <view class="color-black font30 margin-left-sm font-w600">我的粉丝<text class="color6 margin-left-sm font24" style="font-weight: 200">仅显示已填写微信号的粉丝</text></view>
+        <view class="flex-row font-center margin-top-xs" style="border-top: 1px solid #f2f2f2"
+             wx:for="{{infoData.fans}}" wx:key="*this">
+            <image class="round cu-avatar lg margin-left-sm margin-top-xs"
+                src="{{item.avatarUrl}}"/>
+            <view class="flex-column margin-left-sm">
+                <view class="flex-row font-center">
+                    <view class="font28 color3">{{item.nickName}}</view>
+                    <view class="margin-left-xs font20 cuIcon-crownfill {{item.identify > 1 ? 'color-main':'color8'}}"/>
+                </view>
+                <view class="margin-top-xs color6 font24">微信号：{{item.wechatId}}</view>
+            </view>
+            <view class="absolute-right action-btn1 color-main font24"
+                  data-code="{{item.wechatId}}"
+                  wx:if="{{item.wechatId}}"
+                  bindtap="onCopy">复制微信</view>
+        </view>
+    </view>
+    <view class="flex-row flex-center" style="width: {{windowWidth}}px;">
+        <view class="color8 font22 margin-top margin-bottom">————  已经到底啦  ————</view>
+    </view>
+
+<!--</scroll-view>-->

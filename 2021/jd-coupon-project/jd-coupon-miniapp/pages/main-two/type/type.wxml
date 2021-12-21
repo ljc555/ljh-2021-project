@@ -1,0 +1,14 @@
+<!--pages/main/type/type.wxml-->
+<view>
+  
+
+
+    <view class="cu-load loading" wx:if="{{isLoad}}"></view>
+    <view  wx:for="{{productList}}" wx:key="*this">
+      <product-item bindtap="itemCLick" productItem="{{item}}" data-item="{{item}}"/>
+    </view>
+    <view class="color8 flex-row flex-center margin"
+        wx:if="{{productList.length == 0 && isReq}}">———— 没有查询到商品 ————</view>
+  
+
+</view>

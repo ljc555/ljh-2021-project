@@ -1,0 +1,6 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "video-swiper": "/components/video-swiper/video-swiper"
+  }
+}

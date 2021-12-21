@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "会员",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "bc-scroll": "/components/refresh/refresh"
+  }
+}

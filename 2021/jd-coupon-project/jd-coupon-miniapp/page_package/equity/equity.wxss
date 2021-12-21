@@ -1,0 +1,49 @@
+/* page_package/equity/equity.wxss */
+page{
+    background-image: linear-gradient(45deg, #f43f3b, #e76960);
+}
+
+.vip-title{
+    background: linear-gradient(to bottom,#FFFFEF, #FFCEA2);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing:2px
+}
+
+.vip-body{
+    width: 100%;
+    margin-top: 60rpx;
+}
+
+.vip-body1{
+    width: 94%;
+    margin-left: 3%;
+    background-color: white;
+    border-radius: 8rpx;
+    padding: 20rpx;
+    border-radius: 100% 100% 100% 100% / 12rpx 12rpx 30% 30%
+}
+
+.vip-body2{
+    border: 1px solid #FFCEA2;
+    background-color: #FFFFEF;
+    border-radius: 100% 100% 100% 100% / 12rpx 12rpx 30% 30%
+}
+
+.vip-btn{
+    width: 70%;
+    height: 68rpx;
+    font-size: 30rpx;
+    color: #72462E;
+    margin-top: 70rpx;
+    background: linear-gradient(to right,#FFFFEF, #FFCEA2);
+    border-radius: 34rpx;
+}
+
+.list-item-img {
+    width: 80rpx;
+    height: 80rpx;
+    background-image: linear-gradient(90deg, #FDD98C, #FFBA5E);
+    border-radius: 50%;
+    font-size: 30rpx;
+}

@@ -1,0 +1,4 @@
+/* page_package/question/question.wxss */
+page{
+    background-color: #f2f2f2;
+}

@@ -1,0 +1,72 @@
+<!--components/new-item/new-item.wxml-->
+<view class="flex-column padding-sm shadow-blur margin-top-sm"
+      wx:for="{{listData}}" wx:key="*this"
+      style="width: 94%;margin-left: 3%;background-color: white;border-radius: 12rpx;">
+    <view class="color3 font30 font-w600">{{item.title}}</view>
+
+    <view class="color4 font28 margin-top-sm" style="line-height: 44rpx">
+        <rich-text nodes="{{item.content}}"/>
+    </view>
+
+<!--    <view class="{{item.color}} font28 margin-top-sm" wx:if="{{item.subTitle}}">{{item.subTitle}}</view>-->
+
+<!--    <view class="color-6 font28 margin-top-sm" wx:if="{{item.data}}">导师微信号：-->
+<!--        <text class="{{item.color}}">{{item.data}}</text>-->
+<!--    </view>-->
+
+    <view class="flex-row margin-top-sm" style="align-items: center;text-align: left">
+        <view class="bg-gradual-main action-btn flex-row flex-center"
+              bindtap="onClick" data-index="{{index}}"
+              data-item="{{item}}"
+              wx:if="{{item.action && item.type != 4 }}">{{item.action}}
+        </view>
+        <view class="flex-row" style="background-color: #94ccd4" wx:if="{{item.type == 4}}">
+            <button class="bg-gradual-main share-btn"
+                    data-url="{{item.data}}"
+                    open-type="share">{{item.action}}</button>
+        </view>
+        <view class="color-main flex-row flex-center" style="position: absolute;right: 5%;"
+              bindtap="onVideoClick" data-index="{{index}}"
+              data-item="{{item}}"
+              wx:if="{{item.videoUrl}}">
+            <view class="cuIcon-playfill"></view>
+            查看教学视频
+        </view>
+    </view>
+</view>
+
+
+<view class="cu-modal {{invitationDialog ? 'show':''}}">
+    <view class="cu-dialog">
+        <view class="cu-bar bg-white justify-end">
+            <view class="content">提示</view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class="padding-xl bg-gradual-white1 flex-column flex-center font30">
+            <text class="line-height">您的专属导师微信号：{{item.data}}</text>
+            <text class="line-height">关于省钱赚钱的问题，请复制微\n信号去微信添加好友咨询吧~</text>
+            <text class="line-height">添加时请备注：尚橙成员</text>
+        </view>
+        <view class="cu-bar bg-white">
+            <view class="action margin-0 flex-sub  solid-left" bindtap="hideModal" data-iscode="1">取消</view>
+            <view class="action margin-0 flex-sub  solid-left color-main" bindtap="hideModal" data-iscode="0">复制微信
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="cu-modal {{mDialog ? 'show':''}} flex-column flex-center">
+    <view class="cu-dialog1 color-white flex-column flex-center">
+        <view class="flex-column flex-center">
+            <text class="cuIcon-roundclosefill color-white" style="font-size: 32px" bindtap="onClose"></text>
+            <image src="{{item.data}}"  class="margin-top-sm" style="width: 200px;height: 200px;"/>
+            <view class="cu-btn round  shadow-blur colorf2 margin-top"
+                  style="width: 300rpx;background-color: #f43f3b;height: 72rpx;margin-bottom: 72rpx"
+                  bindtap="previewImg">
+                预览长按分享
+            </view>
+        </view>
+    </view>
+</view>

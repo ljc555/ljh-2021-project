@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csbaic.jd.mapper.UserMapper">
+
+
+    <update id="updateUserInfoById">
+        UPDATE jd_user
+
+        <set>
+            <foreach item="item" index="key" collection="values">
+
+                <if test="item != null">
+                    ${key} = #{item},
+                </if>
+
+            </foreach>
+        </set>
+
+
+        WHERE id = #{userId}
+    </update>
+
+
+    <update id="updateWechatIdById">
+
+        UPDATE jd_wechat_user
+
+          SET wechat_id = #{wechatId}
+
+        WHERE user_id = #{userId}
+    </update>
+</mapper>

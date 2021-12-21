@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csbaic.jd.mapper.OptionMapper">
+
+
+    <update id="setOption">
+        UPDATE jd_option AS o
+        SET o.option_value = #{value}
+        WHERE o.option_name = #{name}
+    </update>
+
+    <select id="getOptions" resultType="com.csbaic.jd.dto.Option">
+        SELECT o.option_name AS `key`,  o.option_value AS `value` from jd_option AS o
+        <where>
+            <foreach collection="keys" item="k">
+                OR o.option_name = #{k}
+            </foreach>
+        </where>
+    </select>
+</mapper>

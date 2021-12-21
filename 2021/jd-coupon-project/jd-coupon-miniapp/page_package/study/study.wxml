@@ -1,0 +1,26 @@
+<!--page_package/study/study.wxml-->
+<custom bgColor="bg-gradual-main" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content" class="font-w600">进阶学习</view>
+</custom>
+
+<view class="flex-column padding-sm">
+    <view class="color3 font-w600">招商+入门+冲刺官方系统培训课程</view>
+    <text class="font26 color6 margin-top-sm"
+          style="line-height: 34rpx">惠享主力就业计划特别课，集招商、入门、提升的综合进阶培训，主力更多人创收！
+    </text>
+
+    <image style="width: 100%;height: {{(windowHeight * 0.8)-CustomBar}}px"
+           class="margin-top-sm"
+           src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1583131085102&di=3454eccc0e5443f08f24157034dd9220&imgtype=0&src=http%3A%2F%2Fhbimg.huabanimg.com%2F437304a7ca4cf0c9386df81fcfc761299c6a11271ffc5-OwRrXi_fw658"/>
+
+    <view class="flex-column flex-center margin">
+        <view class="cu-btn bg-gradual-main round"
+              bindtap="onSave"
+              style="width: 70%">保存到手机相册</view>
+        <view class="cu-btn bg-gradual-main round margin" style="width: 70%"
+              bindtap="onPreview">分享图片
+        </view>
+    </view>
+
+</view>

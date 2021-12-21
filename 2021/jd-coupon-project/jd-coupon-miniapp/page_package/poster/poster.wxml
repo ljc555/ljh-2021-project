@@ -1,0 +1,5 @@
+<!--page_package/poster/poster.wxml-->
+<view style="width: 1px;height: 72rpx"></view>
+
+
+<poster-item listData="{{posterList}}"/>

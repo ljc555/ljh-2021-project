@@ -1,0 +1,4 @@
+/* page_package/fans/fans.wxss */
+page{
+    background-color: #f2f2f2;
+}

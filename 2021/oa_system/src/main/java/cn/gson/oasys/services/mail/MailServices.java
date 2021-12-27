@@ -423,8 +423,9 @@ public class MailServices {
 			messageBodyPart.setDataHandler(new DataHandler(source));
 			// 添加附件的标题
 			// 这里很重要，通过下面的Base64编码的转换可以保证你的中文附件标题名在发送时不会变成乱码
-			sun.misc.BASE64Encoder enc = new sun.misc.BASE64Encoder();
-			messageBodyPart.setFileName("=?GBK?B?"+ enc.encode(filename.getBytes()) + "?=");
+			//sun.misc.BASE64Encoder enc = new sun.misc.BASE64Encoder();
+			//messageBodyPart.setFileName("=?GBK?B?"+ enc.encode(filename.getBytes()) + "?=");
+			messageBodyPart.setFileName("=?GBK?B?"+ filename.getBytes() + "?=");
 			multipart.addBodyPart(messageBodyPart);
 			
 			// 将multipart对象放到message中

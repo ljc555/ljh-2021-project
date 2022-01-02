@@ -1,0 +1,31 @@
+一、后端启动
+   运行BootApplication
+
+   http://localhost:8080/wx/swagger-ui/index.html
+
+二、启动后端管理控制台
+    修改vue.config.js的端口target: 'http://localhost:8080/'
+    ● 安装
+    npm install
+    ● 编译启动
+    npm run serve
+    ● 日志提示启动成功后，浏览器打开如下地址：
+      ○ 首页：http://localhost:8001
+      ○ 登录账号：admin / 123456
+
+    如果npm执行报错，执行命令：npm config set registry https://registry.npm.taobao.org
+
+三、启动App端
+    修改vue.config.js的端口target: 'http://127.0.0.1:8080'
+
+    因为移动端UI一般都会自己设计定制，这个项目仅提供demo，包括：微信授权登录、微信分享、文章搜索、文章详情
+    ● 启动wx-api项目,具体流程参考对应项目介绍
+    ● 安装依赖
+    npm install
+    ● 修改.env.development开发环境配置文件
+      ○ VUE_APP_WX_APPID 公众号APPID
+      ○ VUE_APP_WX_QRCODE 公众号二维码链接
+    ● 编译并启动
+    npm run serve
+    ● 浏览器打开如下地址：
+      ○ 首页：http://localhost:8080

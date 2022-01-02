@@ -1,0 +1,8 @@
+https://www.yuque.com/nifury/wx/sadsf3
+
+● 项目后端接口：https://github.com/niefy/wx-manage
+● 管理后台界面：https://github.com/niefy/wx-api
+● 移动端界面（可选）：https://github.com/niefy/wx-client
+
+
+

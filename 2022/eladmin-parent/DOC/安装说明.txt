@@ -1,0 +1,12 @@
+项目地址：https://github.com/elunez/eladmin 
+文档地址：https://el-admin.vip/
+
+一、安装数据库
+    修改数据库地址配置
+
+二、启动后端
+    AppRun.java
+
+三、启动前端
+    npm run dev
+    http://localhost:8013/

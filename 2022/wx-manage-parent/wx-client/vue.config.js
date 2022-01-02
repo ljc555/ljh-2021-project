@@ -7,6 +7,7 @@ module.exports = {
 		proxy: {
 			'/wx': {
 				target: 'http://127.0.0.1:8080'
+                //target: 'http://193.112.22.138:8019'
 			},
 		}
 	},

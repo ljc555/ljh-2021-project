@@ -10,12 +10,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>eladmin-system</artifactId>
-    <name>核心模块</name>
+    <name>eladmin-system</name>
 
     <properties>
         <jjwt.version>0.11.1</jjwt.version>
         <!-- oshi监控需要指定jna版本, 问题详见 https://github.com/oshi/oshi/issues/1040 -->
         <jna.version>5.8.0</jna.version>
+        <!-- docker私服地址 -->
+        <docker.repostory>119.29.103.133:81</docker.repostory>
+        <!--项目名,需要和Harbor中的项目名称保持一致 -->
+        <docker.registry.name>git-code</docker.registry.name>
     </properties>
 
     <dependencies>
@@ -101,6 +105,29 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.2.2</version>
+                <configuration>
+                    <serverId>dockerharbor</serverId>
+                    <registryUrl>http://${docker.repostory}</registryUrl>
+                    <!--必须配置dockerHost标签（除非配置系统环境变量DOCKER_HOST）-->
+                    <dockerHost>http://192.168.85.40:2375</dockerHost>
+                    <!--Building image 192.168.10.11/demo1-->
+                    <imageName>${docker.repostory}/${docker.registry.name}/${project.artifactId}:${project.version}</imageName>
+                    <!-- 指定 Dockerfile 路径-->
+                    <dockerDirectory>${basedir}/</dockerDirectory>
+                    <!-- jar包位置-->
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
                 </configuration>
             </plugin>
         </plugins>

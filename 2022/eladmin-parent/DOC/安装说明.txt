@@ -10,3 +10,6 @@
 三、启动前端
     npm run dev
     http://localhost:8013/
+
+    编译：
+    npm run build:prod
